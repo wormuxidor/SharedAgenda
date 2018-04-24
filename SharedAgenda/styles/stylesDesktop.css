@@ -3,6 +3,8 @@
 }
 
 nav {
-    width:100%;
-    height:auto;
+    background-color: navy;
+    width: 100%;
+    height: auto;
+    bottom: 0;
 }

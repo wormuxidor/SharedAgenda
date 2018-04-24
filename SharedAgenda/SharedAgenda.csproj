@@ -89,6 +89,7 @@
   <ItemGroup>
     <Content Include="Login.aspx" />
     <Content Include="styles\stylesDesktop.css" />
+    <Content Include="styles\stylesMobile.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
