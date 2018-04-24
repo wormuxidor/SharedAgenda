@@ -1,8 +1,8 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -30,15 +30,15 @@ namespace SharedAgenda
             Boolean isAdmin = false;
             Boolean isErweitert = false;
 
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            MySqlCommand command = new MySqlCommand("getPwhash", conn)
+            SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand("getPwhash", conn)
             {
                 CommandType = CommandType.StoredProcedure
             };
-            command.Parameters.Add("inKuerzel", MySqlDbType.VarChar).Value = user;
+            command.Parameters.Add("inKuerzel", SqlDbType.VarChar).Value = user;
             conn.Open();
 
-            using (MySqlDataAdapter sda = new MySqlDataAdapter(command))
+            using (SqlDataAdapter sda = new SqlDataAdapter(command))
             {
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
@@ -56,9 +56,9 @@ namespace SharedAgenda
             }
             if (isRight == true)
             {
-                MySqlConnection conn2 = new MySqlConnection(connectionString);
+                SqlConnection conn2 = new SqlConnection(connectionString);
                 string connectionString2 = String.Format("UPDATE Users SET isLoggedIn = 1 WHERE Kuerzel = '{0}';", user);
-                MySqlCommand command2 = new MySqlCommand(connectionString2, conn2);
+                SqlCommand command2 = new SqlCommand(connectionString2, conn2);
                 conn2.Open();
                 int response = command2.ExecuteNonQuery();
                 conn2.Close();
