@@ -8,3 +8,26 @@ nav {
     height: auto;
     bottom: 0;
 }
+.loginTextBox{
+    border: solid navy 1px;
+    background-color: white;
+    border-radius: 2px;
+    padding: 3px;
+}
+.loginTextBox:hover{
+    transition:ease-in-out 0.1s;
+    box-shadow: 0 0 0pt 1pt navy;
+}
+.loginLabel{
+    width: 150px;
+}
+div.loginRow{
+    display: block;
+    margin: 2px;
+}
+div.loginRowElementInline{
+    display: inline-block;
+}
+div.loginRowElementSimple{
+    display:block;
+}

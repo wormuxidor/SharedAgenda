@@ -24,11 +24,8 @@ namespace SharedAgenda
         private void checkDetails()
         {
             Boolean isRight = false;
-            String user = usernameBox.Text;
+            String user = emailBox.Text;
             String password = passwordBox.Text;
-
-            Boolean isAdmin = false;
-            Boolean isErweitert = false;
 
             SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand("pwCompare", conn)
@@ -54,22 +51,19 @@ namespace SharedAgenda
             }
             if (isRight == true)
             {
-                SqlConnection conn2 = new SqlConnection(connectionString);
-                string connectionString2 = String.Format("UPDATE Users SET isLoggedIn = 1 WHERE Kuerzel = '{0}';", user);
                 SqlCommand command2 = new SqlCommand("setLoginStatus", conn)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
                 command2.Parameters.Add("email", SqlDbType.NVarChar).Value = user;
                 command2.Parameters.Add("statuscode", SqlDbType.Int).Value = 1;
-                conn2.Open();
+                conn.Open();
                 int response = command2.ExecuteNonQuery();
-                conn2.Close();
-                
+                conn.Close();
             }
             else
             {
-                Label lbl = (Label)this.Master.FindControl("lblmsgMaster");
+                Label lbl = loginRow2StatusLabel;
                 lbl.BackColor = Color.Red;
                 lbl.ForeColor = Color.White;
                 lbl.Text = " Username oder Passwort ist falsch.....";

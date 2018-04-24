@@ -13,13 +13,13 @@ namespace SharedAgenda {
     public partial class Login {
         
         /// <summary>
-        /// usernameBox control.
+        /// emailBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox usernameBox;
+        protected global::System.Web.UI.WebControls.TextBox emailBox;
         
         /// <summary>
         /// FieldValidator1 control.
@@ -58,12 +58,12 @@ namespace SharedAgenda {
         protected global::System.Web.UI.WebControls.Button button1;
         
         /// <summary>
-        /// lblmsgM control.
+        /// loginRow2StatusLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsgM;
+        protected global::System.Web.UI.WebControls.Label loginRow2StatusLabel;
     }
 }
