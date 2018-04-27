@@ -11,7 +11,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <input type="hidden" id="refreshed" value="no" >
     <div class="contentWhole">
-        <div class="contentHeader">
+        <div id="loginEntryBorder">
+            <div class="contentHeader">
             <h1 class="loginHeader">Login</h1>
         </div>
         <div id="loginRow1" class="loginRow">
@@ -42,4 +43,6 @@
             </div>
         </div>
     </div>
+        </div>
+        
 </asp:Content>

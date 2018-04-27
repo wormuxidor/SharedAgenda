@@ -66,7 +66,7 @@ namespace SharedAgenda
                 Label lbl = loginRow2StatusLabel;
                 lbl.BackColor = Color.Red;
                 lbl.ForeColor = Color.White;
-                lbl.Text = " Username oder Passwort ist falsch.....";
+                lbl.Text = "Username oder Passwort ist falsch.....";
             }
         }
 
