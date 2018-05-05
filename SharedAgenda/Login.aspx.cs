@@ -21,7 +21,7 @@ namespace SharedAgenda
 
         }
 
-        private void checkDetails()
+        private bool checkDetails()
         {
             Boolean isRight = false;
             String user = emailBox.Text;
@@ -51,22 +51,11 @@ namespace SharedAgenda
             }
             if (isRight == true)
             {
-                SqlCommand command2 = new SqlCommand("setLoginStatus", conn)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                command2.Parameters.Add("email", SqlDbType.NVarChar).Value = user;
-                command2.Parameters.Add("statuscode", SqlDbType.Int).Value = 1;
-                conn.Open();
-                int response = command2.ExecuteNonQuery();
-                conn.Close();
+                return true;
             }
             else
             {
-                Label lbl = loginRow2StatusLabel;
-                lbl.BackColor = Color.Red;
-                lbl.ForeColor = Color.White;
-                lbl.Text = " Username oder Passwort ist falsch.....";
+                return false;
             }
         }
 
@@ -88,7 +77,17 @@ namespace SharedAgenda
 
         protected void button1_Click(object sender, EventArgs e)
         {
-            this.checkDetails();
+            if (this.checkDetails())
+            {
+                FormsAuthentication.RedirectFromLoginPage(emailBox.Text);
+            }
+            else
+            {
+                Label lbl = loginRow2StatusLabel;
+                lbl.BackColor = Color.Red;
+                lbl.ForeColor = Color.White;
+                lbl.Text = "Username oder Passwort ist falsch.....";
+            }
         }
     }
 }
