@@ -1,4 +1,4 @@
-window.SessionTimeout = (function () {
+﻿window.SessionTimeout = (function () {
     var _timeLeft, _popupTimer, _countDownTimer;
 
     var stopTimers = function () {
