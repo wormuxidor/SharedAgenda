@@ -91,6 +91,7 @@
   <ItemGroup>
     <Content Include="Login.aspx" />
     <Content Include="NewEvent.aspx" />
+    <Content Include="scripts\scripts.js" />
     <Content Include="Shared_Agenda.aspx" />
     <Content Include="styles\stylesDesktop.css" />
     <Content Include="styles\stylesMobile.css" />
