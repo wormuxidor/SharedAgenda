@@ -76,7 +76,7 @@ namespace SharedAgenda
             return Sb.ToString();
         }
 
-        protected void button1_Click(object sender, EventArgs e)
+        protected void loginButton_Click(object sender, EventArgs e)
         {
             if (this.checkDetails())
             {
@@ -84,10 +84,10 @@ namespace SharedAgenda
             }
             else
             {
-                Label lbl = loginRow2StatusLabel;
-                lbl.BackColor = Color.Red;
-                lbl.ForeColor = Color.White;
-                lbl.Text = "Username oder Passwort ist falsch.....";
+                TextBox etb = emailBox;
+                TextBox ptb = passwordBox;
+                etb.BackColor = Color.FromArgb(16090238);
+                ptb.BackColor = Color.FromArgb(16090238);
             }
         }
     }

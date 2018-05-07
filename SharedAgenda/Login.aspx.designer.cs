@@ -49,21 +49,12 @@ namespace SharedAgenda {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator FieldValidator2;
         
         /// <summary>
-        /// button1 control.
+        /// loginButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button button1;
-        
-        /// <summary>
-        /// loginRow2StatusLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label loginRow2StatusLabel;
+        protected global::System.Web.UI.WebControls.Button loginButton;
     }
 }

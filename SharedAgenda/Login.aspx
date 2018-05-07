@@ -12,12 +12,15 @@
     <input type="hidden" id="refreshed" value="no" >
     <div class="contentWhole">
         <div id="loginEntryBorder">
-            <div class="contentHeader">
-            <h1 class="loginHeader">Login</h1>
-        </div>
+            <div id="contentHeaderContainer">
+                <div class="contentHeader">
+                <h1 class="loginHeader">Login</h1>
+                </div>
+            </div>
+        <div id="loginRowsContainer">
         <div id="loginRow1" class="loginRow">
             <div id="loginRow1Label" class="loginLabel loginRowElementInline">
-                <asp:Label runat="server" Text="Email:" CssClass="sansseriflabel"></asp:Label>
+                <asp:Label runat="server" Text="Email:"></asp:Label>
             </div>
             <div id="loginRow1Box" class="loginRowElementInline">
                 <asp:TextBox runat="server" ID="emailBox" CssClass="loginTextBox"></asp:TextBox>
@@ -27,22 +30,23 @@
         </div>
         <div id="loginRow2" class="loginRow">
             <div id="loginRow2Label" class="loginLabel loginRowElementInline">
-                <asp:Label runat="server" Text="Password:" CssClass="sansseriflabel"></asp:Label>
+                <asp:Label runat="server" Text="Password:"></asp:Label>
             </div>
             <div id="loginRow2Box" class="loginRowElementInline">
                 <asp:TextBox runat="server" ID="passwordBox" EnableViewState="false" TextMode="Password" CssClass="loginTextBox"></asp:TextBox>
                 <asp:RequiredFieldValidator runat="server" ID="FieldValidator2" ControlToValidate="passwordBox" ValidationGroup="ValidLogin">
                 </asp:RequiredFieldValidator>
             </div>
-            <div id="loginRow2Button" class="loginRowElementSimple">
-                <asp:Button runat="server" ID="button1" OnClick="button1_Click" Text="Anmelden" CssClass="floatRightButton" 
+        </div>
+        <div id="loginRow3" class="loginRow">
+            <div id="loginRow3Label" class="loginLabel loginRowElementInline">
+            </div>
+            <div id="loginRow2Button" class="loginRowElementInline">
+                <asp:Button runat="server" ID="loginButton" OnClick="loginButton_Click" Text="Anmelden" CssClass="loginButton" 
                 CausesValidation="true" ValidationGroup="ValidLogin" ValidateRequestMode="Enabled" />
             </div>
-            <div id="loginRow2Status" class="loginRowElementSimple">
-                <asp:Label ID="loginRow2StatusLabel" runat="server"></asp:Label>
-            </div>
+        </div>
+        </div>
         </div>
     </div>
-        </div>
-        
 </asp:Content>

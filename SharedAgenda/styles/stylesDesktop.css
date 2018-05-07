@@ -3,31 +3,67 @@
     padding: 0;
 }
 
-
+/* Standard Colors:     rgb(247, 250, 255) [Bläuliches Weiss]
+                        rgb(234, 242, 255) [Sehr helles Blau]
+                        rgb(58, 93, 150) [Mittelhelles Blau]
+                        rgba(58, 93, 150, 50) [Same, 50 % Transparent]
+                        rgb(46, 75, 122) [Etwas duenkleres Blau]
+                        rgb(31, 51, 84) [Dunkles Blau]
+                        rgb(245, 132, 126) [Mildes Rot]
+*/
 
 /*Login*/
 nav {
-    background-color: navy;
-    width: 100%;
-    height: auto;
+    position: fixed;
+    background-color: rgba(58, 93, 150, 50);
+    height: 50px;
+    right: 0;
+    left: 0;
     bottom: 0;
 }
-.loginTextBox{
-    border: solid navy 1px;
-    background-color: white;
-    border-radius: 2px;
-    padding: 3px;
+.loginTextBox {
+    border: solid rgb(46, 75, 122) 1px;
+    background-color: rgb(247, 250, 255);
+    border-radius: 3px;
+    padding: 7px;
 }
-.loginTextBox:hover{
-    transition:ease-in-out 0.1s;
-    box-shadow: 0 0 0pt 1pt navy;
-}
-.loginTextBox:focus{
-    box-shadow: 0 0 0pt 2pt navy;
-}
+    .loginTextBox:hover {
+        transition: ease-in-out 0.1s;
+        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+    }
+    .loginTextBox:focus {
+        background-color: rgb(234, 242, 255);
+    }
 .loginLabel{
     width: 150px;
 }
+.loginButton {
+    border: solid rgb(46, 75, 122) 1px;
+    background-color: rgb(247, 250, 255);
+    border-radius: 3px;
+    padding: 4px;
+    color: rgb(46, 75, 122);
+}
+    .loginButton:hover {
+        transition: ease-in-out 0.1s;
+        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+        background-color: rgb(46, 75, 122);
+        color: rgb(247, 250, 255);
+    }
+    .loginButton:focus {
+        background-color: rgb(234, 242, 255);
+    }
+        .loginButton:focus:hover {
+            transition: ease-in-out 0.1s;
+            box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+            background-color: rgb(46, 75, 122);
+            color: rgb(247, 250, 255);
+        }
+    .loginButton:active {
+        background-color: rgb(31, 51, 84);
+        color: rgb(46, 75, 122);
+    }
+
 div.loginRow{
     display: block;
     margin: 10px;
@@ -38,18 +74,37 @@ div.loginRowElementInline{
 div.loginRowElementSimple{
     display:block;
 }
-h1.loginHeader{
-    font-family:sans-serif;
+h1.loginHeader {
+    font-family: sans-serif;
     font-size: 150%;
+    color: rgb(247, 250, 255);
+    margin: 0;
 }
-
-#loginEntryBorder{
-    border:solid black 1px;
+.loginLabel {
+    font-family: sans-serif;
+    color: rgb(46, 75, 122);
+}
+#loginEntryBorder {
+    position: fixed;
+    border: solid rgb(58, 93, 170) 1px;
     border-radius: 2px;
     display: block;
-    width:auto;
-    height:auto;
-    padding: 20px;
+    width: 500px;
+    height: 300px;
+    top: 200px;
+    left: 50%;
+    margin-left: -250px;
+}
+#contentHeaderContainer {
+    background-color: rgba(58, 93, 150, 50);
+    padding: 12px;
+}
+#loginRowsContainer{
+    position: fixed;
+    display: block;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: 40px;
 }
 
 
