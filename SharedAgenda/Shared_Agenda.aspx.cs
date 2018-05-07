@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -21,7 +22,8 @@ namespace SharedAgenda
 
         protected void log_out_button_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx", true);
+            FormsAuthentication.SignOut();
+            Response.Redirect("Login.aspx");
         }
 
         protected void New_Event_Click(object sender, EventArgs e)
