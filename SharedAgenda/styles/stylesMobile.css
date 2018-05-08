@@ -39,6 +39,25 @@ h1.loginHeader {
     margin-left: 0;
 }
 
+/* Shared Agenda Main */
+.generalInputBox {
+    border-radius: 5px;
+    padding: 12px;
+}
+
+    .generalInputBox:focus {
+        box-shadow: 0 0 0pt 2pt rgb(58, 93, 150);
+        background-color: rgb(234, 242, 255);
+    }
+.generalButton {
+    border-radius: 5px;
+    padding: 10px;
+}
+    .generalButton:focus {
+        box-shadow: 0 0 0pt 2pt rgb(58, 93, 150);
+        background-color: rgb(46, 75, 122);
+        color: rgb(247, 250, 255);
+    }
 .filter_container, .time_table {
     margin-left: 2%;
     margin-right: 2%;

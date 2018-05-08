@@ -110,18 +110,61 @@ h1.loginHeader {
 
 
 /*for Shared Agenda Main Site*/
-.filter_container, .time_table{
-    margin: 1%;
+.sansseriflabel {
+    font-family: sans-serif;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    margin-left: 2px;
+    padding: 0;
+}
+.surname{
+    margin-left: 10px;
+}
+.surname, .firstname{
+    font-size: 140%;
+}
+.inlineParagraph{
+    display: inline-block;
+}
+/*
+    .filter_container, .time_table{
+    margin: 1px;
     float: left;
 }
+*/
 
-.filter_container{
-    width: 35%;
-    left: 0;
-    position: absolute;
-    height: 88%;
+#superContainer {
+    float: left;
+    width: 100%;
+    overflow: hidden;
 }
-
+.filter_container {
+    float: left;
+    width: 300px;
+    padding: 5px;
+    /*
+    left: 0;
+    height: 88%;
+    position: absolute;
+    */
+}
+.time_table_wrapper {
+    position: relative;
+    float: left;
+}
+.time_table {
+    border: 1px solid black;
+    position: absolute;
+    float: left;
+    /*
+    height: 88%;
+    overflow: hidden;
+    right: 0;
+    width: 60%;
+    position: absolute;
+    */
+}
 .class_list{
     width:50%;
     margin-right: 2px;
@@ -130,6 +173,50 @@ h1.loginHeader {
 .new_event_button{
     width: 45%
 }
+.generalInputBox {
+    border: solid rgb(46, 75, 122) 1px;
+    background-color: rgb(247, 250, 255);
+    border-radius: 3px;
+    padding: 4px;
+}
+
+    .generalInputBox:hover {
+        transition: ease-in-out 0.1s;
+        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+    }
+
+    .generalInputBox:focus {
+        background-color: rgb(234, 242, 255);
+    }
+.generalButton {
+    border: solid rgb(46, 75, 122) 1px;
+    background-color: rgb(247, 250, 255);
+    border-radius: 3px;
+    padding: 4px;
+    color: rgb(46, 75, 122);
+}
+    .generalButton:hover {
+        transition: ease-in-out 0.1s;
+        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+        background-color: rgb(46, 75, 122);
+        color: rgb(247, 250, 255);
+    }
+
+    .generalButton:focus {
+        background-color: rgb(234, 242, 255);
+    }
+
+        .generalButton:focus:hover {
+            transition: ease-in-out 0.1s;
+            box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+            background-color: rgb(46, 75, 122);
+            color: rgb(247, 250, 255);
+        }
+
+    .generalButton:active {
+        background-color: rgb(31, 51, 84);
+        color: rgb(46, 75, 122);
+    }
 
 .week_selection{
     width:100%;
@@ -146,14 +233,10 @@ h1.loginHeader {
     margin-bottom:10px;
 }
 
-.time_table{
-    border: 1px solid black;
-    height: 88%;
-    width: 60%;
-    right: 0;
-    position: absolute;
+.events{
+    width: inherit;
+    display: block;
 }
-
 .log_out_button{
     width: 100%;
     bottom: 0;

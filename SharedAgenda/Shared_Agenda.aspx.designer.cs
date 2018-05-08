@@ -13,15 +13,6 @@ namespace SharedAgenda {
     public partial class Shared_Agenda {
         
         /// <summary>
-        /// surname control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label surname;
-        
-        /// <summary>
         /// firstname control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace SharedAgenda {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label firstname;
+        
+        /// <summary>
+        /// surname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label surname;
         
         /// <summary>
         /// class_list control.
