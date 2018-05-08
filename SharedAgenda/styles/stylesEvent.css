@@ -1,0 +1,54 @@
+﻿body {
+    margin:0;
+    padding:0;
+}
+
+.Text_Event {
+    font-size: 18px;
+    font-family: Arial;
+}
+
+.Event {
+    position: absolute;
+    width: 90%;
+    max-width: 500px;
+    height: 90%;
+    max-height: 700px;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    margin:auto;
+
+    border: 2px double black;
+    padding: 10px;
+}
+
+.subject_db, 
+.subject_txt{
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.calender, 
+.calender_txt{
+    margin-bottom: 10px;
+}
+
+.tb_kBeschreibung, 
+.kBeschreibung_txt {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.tb_Beschreibung, 
+.tb_Beschreibung_txt {
+    width: 100%;
+    height: 20%;
+    margin-bottom: 10px;
+}
+
+.rb_eventtype, 
+.rb_eventtype_txt {
+    margin-bottom: 10px;
+}

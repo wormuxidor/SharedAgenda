@@ -13,5 +13,20 @@ namespace SharedAgenda
         {
 
         }
+
+         protected void cancel_btn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Shared_Agenda.aspx", true);
+        }
+
+        protected void delete_btn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Shared_Agenda.aspx", true);
+        }
+
+        protected void edit_btn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NewEvent.aspx", true);
+        }
     }
 }
