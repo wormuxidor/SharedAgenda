@@ -12,7 +12,9 @@ namespace SharedAgenda
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            String[] userData = (String[]) Session["userData"];
+            firstname.Text = userData[0];
+            surname.Text = userData[1];
         }
 
         protected void week_selection_SelectedIndexChanged(object sender, EventArgs e)

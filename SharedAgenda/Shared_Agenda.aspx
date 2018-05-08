@@ -9,10 +9,7 @@
             <p>Wilkommen,</p>
             <asp:Label runat="server" CssClass="surname" ID="surname" Text="Nachname"></asp:Label>
             ,
-            <asp:Label runat="server" CssClass="first_name" ID="first_name" Text="Vorname"></asp:Label>
-            (
-            <asp:Label runat="server" CssClass="user" ID="user" Text="User"></asp:Label>
-            )
+            <asp:Label runat="server" CssClass="first_name" ID="firstname" Text="Vorname"></asp:Label>
         </div>
         <div id="settings" class="settings">
             <p>Board:</p>

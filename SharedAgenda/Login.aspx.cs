@@ -60,6 +60,32 @@ namespace SharedAgenda
             }
         }
 
+        private void setSessionName()
+        {
+            string[] userData = new String[4];
+
+            SqlConnection conn = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand("getFullUserData", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            command.Parameters.Add("email", SqlDbType.NVarChar).Value = emailBox.Text;
+            conn.Open();
+
+            using (SqlDataAdapter sda = new SqlDataAdapter(command))
+            {
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                DataRow row = dt.Rows[0];
+                for(int i = 0;i < row.ItemArray.Length; ++i)
+                {
+                    userData[i] = Convert.ToString(row.ItemArray[i]);
+                }
+                conn.Close();
+                Session["userData"] = userData;
+            }
+        }
+
         private String sha256_hash(String value)
         {
             StringBuilder Sb = new StringBuilder();
@@ -80,6 +106,7 @@ namespace SharedAgenda
         {
             if (this.checkDetails())
             {
+                this.setSessionName();
                 FormsAuthentication.RedirectFromLoginPage(emailBox.Text, false);
             }
             else
