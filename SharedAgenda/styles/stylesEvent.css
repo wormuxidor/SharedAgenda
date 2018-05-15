@@ -20,35 +20,94 @@
     left:0;
     margin:auto;
 
-    border: 2px double black;
+    border: 2px solid rgb(46, 75, 122);
+    border-radius: 3px;
     padding: 10px;
 }
 
 .subject_db, 
 .subject_txt{
-    width:100%;
+    width:98%;
     margin-bottom: 10px;
+
 }
 
-.calender, 
-.calender_txt{
+.calender,
+.calender_txt {
     margin-bottom: 10px;
+    width: 99%;
 }
 
-.tb_kBeschreibung, 
+.tb_kBeschreibung,
 .kBeschreibung_txt {
-    width: 100%;
+    width: 98%;
     margin-bottom: 10px;
+
 }
 
-.tb_Beschreibung, 
+.tb_Beschreibung,
 .tb_Beschreibung_txt {
-    width: 100%;
+    width: 98%;
     height: 20%;
     margin-bottom: 10px;
 }
 
-.rb_eventtype, 
+.rb_eventtype,
 .rb_eventtype_txt {
     margin-bottom: 10px;
 }
+
+.generalButton {
+    border: solid rgb(46, 75, 122) 1px;
+    background-color: rgb(247, 250, 255);
+    border-radius: 3px;
+    padding: 4px;
+    color: rgb(46, 75, 122);
+}
+
+    .generalButton:hover {
+        transition: ease-in-out 0.1s;
+        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+        background-color: rgb(46, 75, 122);
+        color: rgb(247, 250, 255);
+    }
+
+    .generalButton:focus {
+        background-color: rgb(234, 242, 255);
+    }
+
+        .generalButton:focus:hover {
+            transition: ease-in-out 0.1s;
+            box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+            background-color: rgb(46, 75, 122);
+            color: rgb(247, 250, 255);
+        }
+
+    .generalButton:active {
+        background-color: rgb(31, 51, 84);
+        color: rgb(46, 75, 122);
+    }
+
+    .submit_btn{
+        width: 49%;
+    }
+
+    .cancel_btn{
+        width: 49%;
+    }
+
+.generalInputBox {
+    border: solid rgb(46, 75, 122) 1px;
+    background-color: rgb(247, 250, 255);
+    border-radius: 3px;
+    padding: 4px;
+}
+
+    .generalInputBox:hover {
+        transition: ease-in-out 0.1s;
+        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+    }
+
+    .generalInputBox:focus {
+        background-color: rgb(234, 242, 255);
+    }
