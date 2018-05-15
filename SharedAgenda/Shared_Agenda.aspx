@@ -38,7 +38,9 @@
             <div id="eventfilterContainer">
                 <p class="sansseriflabel">Eventtyp:</p>
                 <div class="eventtype generalInputBox" id="eventtype">
-                    <asp:CheckBoxList runat="server" CssClass="events" ID="events"></asp:CheckBoxList>
+                    <asp:CheckBoxList runat="server" CssClass="events" ID="events">
+                        
+                    </asp:CheckBoxList>
                 </div>
                 <asp:Button runat="server" CssClass="eventtype_button generalButton" ID="eventtype_button" Text="Event filtern" />
             </div>
