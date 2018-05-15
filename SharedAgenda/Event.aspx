@@ -1,15 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Event.aspx.cs" Inherits="SharedAgenda.Event" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link rel="stylesheet" href="styles/stylesEvent.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+﻿<%@ Page Language="C#" MasterPageFile="~/general.Master" AutoEventWireup="true" CodeBehind="Event.aspx.cs" Inherits="SharedAgenda.Event" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" href="styles/stylesEvent2.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Event</title>
-</head>
-<body>
-    <form id="form1" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="Event">
         <asp:Label runat="server" CssClass="Text_Event" Text="Fach"></asp:Label><br />
         <asp:Label runat="server" CssClass="subject_txt" Text="subject"></asp:Label><br /><br />
@@ -25,6 +20,4 @@
         <asp:Button runat="server" CssClass="delete_btn" ID="delete_btn" Text="Löschen" OnClick="delete_btn_Click" />
         <asp:Button runat="server" CssClass="cancel_btn" ID="cancel_btn" Text="Abbrechen" OnClick="cancel_btn_Click" />
     </div>
-    </form>
-</body>
-</html>
+</asp:Content>
