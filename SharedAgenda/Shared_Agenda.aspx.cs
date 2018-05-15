@@ -37,11 +37,12 @@ namespace SharedAgenda
 
         protected void New_Event_Click(object sender, EventArgs e)
         {
+            /*
             int privilege = Convert.ToInt32(this.userData[2]);
             if (privilege >= 2)
             {
                 Response.Redirect("NewEvent.aspx");
-            }
+            }*/
         }
     }
 }

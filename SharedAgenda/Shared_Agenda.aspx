@@ -1,8 +1,11 @@
 ﻿<%@ Page Title="Shared Agenda" Language="C#" MasterPageFile="~/general.Master" AutoEventWireup="true" CodeBehind="Shared_Agenda.aspx.cs" Inherits="SharedAgenda.Shared_Agenda" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <asp:ScriptManager runat="server" ID="mainScriptManager"></asp:ScriptManager>
     <div id="superContainer">
     <div class="filter_container">
@@ -81,5 +84,13 @@
                 </div>
             </div>
         </div>
+        <ajaxToolkit:ModalPopupExtender ID="popupExtender" runat="server" TargetControlID="newEventButton"
+            PopupControlID="containerPopup" DropShadow="true" BackgroundCssClass="popupBackground" ></ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" ID="containerPopup" > 
+            <iframe width="400" height="700" src="NewEvent.aspx">
+
+            </iframe>
+            <asp:LinkButton runat="server"><i class="glyphicon glyphicon-sunglasses"></i><span>Erstellen</span></asp:LinkButton>
+        </asp:Panel>
     </div>
 </asp:Content>

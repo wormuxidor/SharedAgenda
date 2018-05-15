@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\ASP.NET AJAX Control Toolkit\Bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="CryptSharp, Version=1.3.0.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CryptSharp.1.3.0\lib\netstandard2.0\CryptSharp.dll</HintPath>
     </Reference>
@@ -140,6 +144,9 @@
     <Compile Include="Shared_Agenda.aspx.designer.cs">
       <DependentUpon>Shared_Agenda.aspx</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
