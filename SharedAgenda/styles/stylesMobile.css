@@ -34,7 +34,7 @@ h1.loginHeader {
     height: initial;
     /*overflow: auto;*/
     position: relative;
-    padding: 1px;
+    padding: 2px;
 }
 #loginEntryBorder {
     border: 0;
@@ -58,9 +58,9 @@ h1.loginHeader {
 /* Shared Agenda Main */
 .generalInputBox {
     border-radius: 5px;
-    padding: 2px;
-    height: 20px;
-    margin:0;
+    padding-bottom: 2px;
+    height: 40px;
+    margin:2px;
     display:normal;
     position:relative;
 }
@@ -72,8 +72,9 @@ h1.loginHeader {
 .generalButton {
     border-radius: 5px;
     padding: 2px;
-    margin:0;
+    margin-bottom:10px;
     position:relative;
+    height:40px;
 }
     .generalButton:focus {
         box-shadow: 0 0 0pt 2pt rgb(58, 93, 150);
@@ -106,25 +107,23 @@ h1.loginHeader {
 
 .log_out_button {
     width: 100%;
-    height: 20px;
     position: relative;
 }
 
 .eventtype, .week_selection, .name p {
     display: none;
-    margin:0;
 }
 
 .eventtype_button {
     width: 100%;
-    height: 20px;
     display: block;
+    height:50px;
 }
 
 .log_out_button {
     width: 100%;
-    height: 20px;
     display: block;
+    height:50px;
 }
 
 .date_mobile {
