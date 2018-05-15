@@ -11,10 +11,12 @@
                         rgb(31, 51, 84) [Dunkles Blau]
                         rgb(255, 216, 216) [Mildes Rot]
                         16767192 [Same, ARGB int]
+                        rgb(221, 221, 221) [GreyedOut Background]
                         rgb(239, 239, 239) [Helles Grau]
                         rgba(221, 221, 221, 30) [Mildes Grau, Transparent 20%]
                         rgb(142, 142, 142) [Dunkles Grau]
                         rgb(71, 71, 71) [Sehr dunkles Grau]
+
 */
 
 /*Login*/
@@ -117,8 +119,8 @@ h1.loginHeader {
 #contentFooterContainer {
     position: absolute;
     display: block;
-    bottom: 12px;
-    right: 6px;
+    bottom: 20px;
+    right: 12px;
 }
 .loginButtonRow{
     display: none;
@@ -171,10 +173,10 @@ h1.loginHeader {
     padding: 3px;
 }
 .time_table {
+    display: flex;
+    flex-direction: row;
     flex: 4;
-    border: 1px solid black;
     position: relative;
-    overflow: auto;
     margin: 10px;
 }
 #name{
@@ -292,4 +294,25 @@ h1.loginHeader {
 
 .eventtype_button, .date_mobile{
     display: none;
+}
+
+.containerDay{
+    display: block;
+    flex: 1;
+    height: 100%;
+    border: solid black 1px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
+}
+.greyedOut{
+    background-color: rgb(221, 221, 221);
+}
+.containerDayLabel{
+    border-bottom: solid black 1px;
+    padding: 4px;
+}
+.dayLabel{
+    margin: 0;
+    padding: 0;
 }

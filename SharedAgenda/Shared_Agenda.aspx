@@ -42,8 +42,42 @@
         </div>
         </div>
         
-        <div id="time_table" class="time_table generalInputBox">
-
+        <div id="time_table" class="time_table">
+            <div class="containerDay" id="Monday">
+                <div class="containerDayLabel">
+                    <h3 class="dayLabel">Montag</h3>
+                </div>
+            </div>
+            <div class="containerDay" id="Tuesday">
+                <div class="containerDayLabel">
+                    <h3 class="dayLabel">Dienstag</h3>
+                </div>
+            </div>
+            <div class="containerDay" id="Wednesday">
+                <div class="containerDayLabel">
+                    <h3 class="dayLabel">Mittwoch</h3>
+                </div>
+            </div>
+            <div class="containerDay" id="Thursday">
+                <div class="containerDayLabel">
+                    <h3 class="dayLabel">Donnerstag</h3>
+                </div>
+            </div>
+            <div class="containerDay" id="Friday">
+                <div class="containerDayLabel">
+                    <h3 class="dayLabel">Freitag</h3>
+                </div>
+            </div>
+            <div class="containerDay greyedOut" id="Saturday">
+                <div class="containerDayLabel">
+                    <h3 class="dayLabel">Samstag</h3>
+                </div>
+            </div>
+            <div class="containerDay greyedOut" id="Sunday">
+                <div class="containerDayLabel">
+                    <h3 class="dayLabel">Sonntag</h3>
+                </div>
+            </div>
         </div>
     </div>
 </asp:Content>
