@@ -38,7 +38,7 @@
                 <asp:Button runat="server" CssClass="eventtype_button generalButton" ID="eventtype_button" Text="Event filtern" />
             </div>
         <div id="log_out" class="log_out">
-            <asp:Button runat="server" CssClass="log_out_button generalButton" ID="log_out_button" Text="Ausloggen" OnClick="log_out_button_Click" />
+            <asp:LinkButton runat="server" CssClass="log_out_button generalButton" ID="log_out_button" OnClick="log_out_button_Click"><i class="glyphicon glyphicon-log-out"></i><span> Abmelden</span></asp:LinkButton>
         </div>
         </div>
         

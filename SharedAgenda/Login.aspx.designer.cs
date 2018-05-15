@@ -31,6 +31,15 @@ namespace SharedAgenda {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator FieldValidator1;
         
         /// <summary>
+        /// loginFailedIcoEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image loginFailedIcoEmail;
+        
+        /// <summary>
         /// passwordBox control.
         /// </summary>
         /// <remarks>
@@ -49,12 +58,30 @@ namespace SharedAgenda {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator FieldValidator2;
         
         /// <summary>
-        /// loginButton control.
+        /// loginFailedIcoPw control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginButton;
+        protected global::System.Web.UI.WebControls.Image loginFailedIcoPw;
+        
+        /// <summary>
+        /// loginButtonRow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton loginButtonRow;
+        
+        /// <summary>
+        /// loginButtonFooter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton loginButtonFooter;
     }
 }

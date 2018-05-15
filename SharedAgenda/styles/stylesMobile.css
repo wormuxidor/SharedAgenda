@@ -37,6 +37,13 @@ h1.loginHeader {
     left: 0;
     right: 0;
     margin-left: 0;
+    margin-top: 0;
+}
+.loginButtonRow{
+    display: initial;
+}
+.loginButtonFooter{
+    display: none;
 }
 
 /* Shared Agenda Main */

@@ -19,7 +19,10 @@ namespace SharedAgenda
         public string connectionString = ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
+            }
         }
 
         private bool checkDetails()
@@ -111,10 +114,16 @@ namespace SharedAgenda
             }
             else
             {
-                TextBox etb = emailBox;
-                TextBox ptb = passwordBox;
-                etb.BackColor = Color.FromArgb(16090238);
-                ptb.BackColor = Color.FromArgb(16090238);
+                System.Web.UI.WebControls.Image emailIco = loginFailedIcoEmail;
+                System.Web.UI.WebControls.Image pwIco = loginFailedIcoPw;
+
+                //etb.BackColor = Color.FromArgb(16767192);
+                //ptb.BackColor = Color.FromArgb(16767192);
+                //emailBox.Attributes.Add("class","loginFailed");
+                //passwordBox.Attributes.Add("class", "loginFailed");
+
+                emailIco.CssClass = "showLoginFailedIco";
+                pwIco.CssClass = "showLoginFailedIco";
             }
         }
     }

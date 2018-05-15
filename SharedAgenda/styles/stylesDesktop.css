@@ -9,7 +9,12 @@
                         rgba(58, 93, 150, 50) [Same, 50 % Transparent]
                         rgb(46, 75, 122) [Etwas duenkleres Blau]
                         rgb(31, 51, 84) [Dunkles Blau]
-                        rgb(245, 132, 126) [Mildes Rot]
+                        rgb(255, 216, 216) [Mildes Rot]
+                        16767192 [Same, ARGB int]
+                        rgb(239, 239, 239) [Helles Grau]
+                        rgba(221, 221, 221, 30) [Mildes Grau, Transparent 20%]
+                        rgb(142, 142, 142) [Dunkles Grau]
+                        rgb(71, 71, 71) [Sehr dunkles Grau]
 */
 
 /*Login*/
@@ -29,11 +34,17 @@ nav {
 }
     .loginTextBox:hover {
         transition: ease-in-out 0.1s;
-        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+        border-color: rgb(71, 71, 71);
+        background-color: rgb(239, 239, 239);
     }
     .loginTextBox:focus {
+        border-color: rgb(71, 71, 71);
         background-color: rgb(234, 242, 255);
     }
+.loginFailed {
+    border: solid rgb(255, 216, 216) 1px;
+    background-color: rgb(255, 216, 216);
+}
 .loginLabel{
     width: 150px;
 }
@@ -41,29 +52,19 @@ nav {
     border: solid rgb(46, 75, 122) 1px;
     background-color: rgb(247, 250, 255);
     border-radius: 3px;
-    padding: 4px;
+    padding: 8px;
     color: rgb(46, 75, 122);
 }
     .loginButton:hover {
         transition: ease-in-out 0.1s;
-        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
-        background-color: rgb(46, 75, 122);
-        color: rgb(247, 250, 255);
+        border: solid rgb(142, 142, 142) 1px;
+        background-color: rgb(239, 239, 239);
+        color: rgb(71, 71, 71);
     }
     .loginButton:focus {
-        background-color: rgb(234, 242, 255);
+        border-color: rgb(71, 71, 71);
+        color: rgb(71, 71, 71);
     }
-        .loginButton:focus:hover {
-            transition: ease-in-out 0.1s;
-            box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
-            background-color: rgb(46, 75, 122);
-            color: rgb(247, 250, 255);
-        }
-    .loginButton:active {
-        background-color: rgb(31, 51, 84);
-        color: rgb(46, 75, 122);
-    }
-
 div.loginRow{
     display: block;
     margin: 10px;
@@ -72,7 +73,7 @@ div.loginRowElementInline{
     display: inline-block;
 }
 div.loginRowElementSimple{
-    display:block;
+    display: block;
 }
 h1.loginHeader {
     font-family: sans-serif;
@@ -95,16 +96,38 @@ h1.loginHeader {
     left: 50%;
     margin-left: -250px;
 }
+@media screen and (max-height: 700px){
+    #loginEntryBorder {
+        height: 300px;
+        top: 50%;
+        margin-top: -150px;
+    }
+}
 #contentHeaderContainer {
     background-color: rgba(58, 93, 150, 50);
     padding: 12px;
 }
-#loginRowsContainer{
+#loginRowsContainer {
     position: fixed;
     display: block;
     left: 50%;
     margin-left: -200px;
     margin-top: 40px;
+}
+#contentFooterContainer {
+    position: absolute;
+    display: block;
+    bottom: 12px;
+    right: 6px;
+}
+.loginButtonRow{
+    display: none;
+}
+.loginFailedIco {
+    display: none;
+}
+.showLoginFailedIco {
+    display: initial;
 }
 
 
@@ -127,10 +150,18 @@ h1.loginHeader {
 .inlineParagraph{
     display: inline-block;
 }
+/*
+    .filter_container, .time_table{
+    margin: 1px;
+    float: left;
+}
+*/
 
 #superContainer {
     display: flex;
     flex-flow: row;
+    width: 100%;
+    height: 100%;
 }
 .filter_container {
     display: flex;
@@ -142,30 +173,40 @@ h1.loginHeader {
 .time_table {
     flex: 4;
     border: 1px solid black;
+    position: relative;
     overflow: auto;
     margin: 10px;
 }
 #name{
-    height: 70px;
+    height:70px;
+    overflow: auto;
+    position: relative;
     padding: 3px;
 }
 #eventContainer {
-    flex: 1 1 100%;
+    height: auto;
+    overflow: auto;
+    position: relative;
     padding: 3px;
 }
 #weekContainer {
-    flex: 4 1 100%;
+    flex: 5;
+    overflow: auto;
+    position: relative;
     padding: 3px;
 }
 #eventfilterContainer {
-    flex: 1 1 100%;
+    min-height: 100px;
+    overflow: auto;
+    position: relative;
     padding: 3px;
 }
 #log_out {
-    flex: 1 1 100%;
+    height: auto;
+    overflow: auto;
+    position: relative;
     padding: 3px;
 }
-
 .class_list{
     width:50%;
     margin-right: 2px;
@@ -221,10 +262,20 @@ h1.loginHeader {
 
 .week_selection {
     width: 100%;
+    /*
+        height: 30vh;
+        position: relative;
+    */
 }
 
 .eventtype {
     width: inherit;
+    min-height: 100px;
+    /*
+        height:10vh;
+        min-height:100px;
+        position: relative;
+    */
     border: 1px solid black;
     margin-bottom: 10px;
 }
@@ -233,7 +284,10 @@ h1.loginHeader {
     display: block;
 }
 .log_out_button {
+    text-align: center;
+    display: block;
     width: 100%;
+    bottom: 0;
 }
 
 .eventtype_button, .date_mobile{
