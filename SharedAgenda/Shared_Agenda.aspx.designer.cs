@@ -13,6 +13,15 @@ namespace SharedAgenda {
     public partial class Shared_Agenda {
         
         /// <summary>
+        /// mainScriptManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager mainScriptManager;
+        
+        /// <summary>
         /// firstname control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace SharedAgenda {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList class_list;
+        
+        /// <summary>
+        /// newEventButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton newEventButton;
         
         /// <summary>
         /// week_selection control.

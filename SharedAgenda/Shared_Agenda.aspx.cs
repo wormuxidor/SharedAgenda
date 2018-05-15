@@ -10,11 +10,18 @@ namespace SharedAgenda
 {
     public partial class Shared_Agenda : System.Web.UI.Page
     {
+        String[] userData;
         protected void Page_Load(object sender, EventArgs e)
         {
-            String[] userData = (String[]) Session["userData"];
-            firstname.Text = userData[0];
-            surname.Text = userData[1];
+            this.userData = (String[]) Session["userData"];
+            firstname.Text = this.userData[0];
+            surname.Text = this.userData[1];
+
+            int privilege = Convert.ToInt32(this.userData[2]);
+            if (privilege < 2)
+            {
+                newEventButton.Attributes.Add("style","display:none");
+            }
         }
 
         protected void week_selection_SelectedIndexChanged(object sender, EventArgs e)
@@ -30,7 +37,11 @@ namespace SharedAgenda
 
         protected void New_Event_Click(object sender, EventArgs e)
         {
-            Response.Redirect("NewEvent.aspx");
+            int privilege = Convert.ToInt32(this.userData[2]);
+            if (privilege >= 2)
+            {
+                Response.Redirect("NewEvent.aspx");
+            }
         }
     }
 }
