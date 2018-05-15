@@ -196,12 +196,12 @@ h1.loginHeader {
     flex-direction: row;
 }
 #weekContainer {
-    flex: 5;
     overflow: auto;
     position: relative;
     padding: 3px;
 }
 #eventfilterContainer {
+    flex: 5;
     min-height: 100px;
     overflow: auto;
     position: relative;

@@ -1,8 +1,9 @@
-﻿body{
+﻿body {
     margin: 0;
     padding: 0;
 }
-nav{
+
+nav {
     display: none;
 }
 
@@ -10,24 +11,26 @@ nav{
     border-radius: 5px;
     padding: 12px;
 }
+
     .loginTextBox:focus {
         box-shadow: 0 0 0pt 2pt rgb(58, 93, 150);
         background-color: rgb(234, 242, 255);
     }
+
 .loginButton {
     border-radius: 5px;
     padding: 10px;
 }
+
     .loginButton:focus {
         box-shadow: 0 0 0pt 2pt rgb(58, 93, 150);
         background-color: rgb(46, 75, 122);
         color: rgb(247, 250, 255);
     }
+
 h1.loginHeader {
     font-size: 220%;
     margin: 3px;
-
-
 }
 
 #name {
@@ -36,23 +39,17 @@ h1.loginHeader {
     position: relative;
     padding: 2px;
 }
+
 #loginEntryBorder {
     border: 0;
     border-radius: 0;
     height: 300px;
     width: initial;
-    height:initial;
+    height: initial;
     top: 0;
     left: 0;
     right: 0;
     margin-left: 0;
-    margin-top: 0;
-}
-.loginButtonRow{
-    display: initial;
-}
-.loginButtonFooter{
-    display: none;
 }
 
 /* Shared Agenda Main */
@@ -60,33 +57,36 @@ h1.loginHeader {
     border-radius: 5px;
     padding-bottom: 2px;
     height: 40px;
-    margin:2px;
-    display:normal;
-    position:relative;
+    margin: 2px;
+    display: normal;
+    position: relative;
 }
 
     .generalInputBox:focus {
         box-shadow: 0 0 0pt 2pt rgb(58, 93, 150);
         background-color: rgb(234, 242, 255);
     }
+
 .generalButton {
     border-radius: 5px;
     padding: 2px;
-    margin-bottom:10px;
-    position:relative;
-    height:40px;
+    margin-bottom: 10px;
+    position: relative;
+    height: 40px;
 }
+
     .generalButton:focus {
         box-shadow: 0 0 0pt 2pt rgb(58, 93, 150);
         background-color: rgb(46, 75, 122);
         color: rgb(247, 250, 255);
     }
+
 .filter_container, .time_table {
     margin-left: 3%;
     margin-right: 3%;
-    margin-top:2%;
+    margin-top: 2%;
     width: 90%;
-    display:normal;
+    display: normal;
 }
 
 .time_table {
@@ -97,11 +97,11 @@ h1.loginHeader {
     position: absolute;
 }
 
-.filter_container{
-    bottom:0;
-    margin-bottom:0;
+.filter_container {
+    bottom: 0;
+    margin-bottom: 0;
     height: 58%;
-    position:absolute;
+    position: absolute;
     width: 93%;
 }
 
@@ -117,13 +117,13 @@ h1.loginHeader {
 .eventtype_button {
     width: 100%;
     display: block;
-    height:50px;
+    height: 50px;
 }
 
 .log_out_button {
     width: 100%;
     display: block;
-    height:50px;
+    height: 50px;
 }
 
 .date_mobile {
@@ -146,7 +146,6 @@ h1.loginHeader {
 }
 
 #weekContainer {
-    flex: 5;
     overflow: auto;
     position: relative;
     padding: 0;
@@ -156,7 +155,8 @@ h1.loginHeader {
     overflow: auto;
     position: relative;
     padding: 0;
-    min-height:initial;
+    min-height: initial;
+    flex:none;
 }
 
 .sansseriflabel {
