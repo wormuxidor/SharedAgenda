@@ -44,8 +44,8 @@
         </div>
         </div>
         
-        <div id="time_table" class="time_table">
-            <div class="containerDay" id="Monday">
+        <div id="time_table" class="time_table generalInputBox">
+                <div class="containerDay" id="Monday">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Montag</h3>
                 </div>

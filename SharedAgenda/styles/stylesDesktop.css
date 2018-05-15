@@ -135,30 +135,8 @@ h1.loginHeader {
 
 
 /*for Shared Agenda Main Site*/
-.sansseriflabel {
-    font-family: sans-serif;
-    margin: 0;
-    margin-top: 10px;
-    margin-bottom: 3px;
-    margin-left: 2px;
-    padding: 0;
-}
-.surname{
-    margin-left: 10px;
-}
-.surname, .firstname{
-    font-size: 140%;
-}
-.inlineParagraph{
-    display: inline-block;
-}
-/*
-    .filter_container, .time_table{
-    margin: 1px;
-    float: left;
-}
-*/
 
+/* CONTAINER */
 #superContainer {
     display: flex;
     position: absolute;
@@ -166,6 +144,7 @@ h1.loginHeader {
     width: 100%;
     height: calc(100% - 50px);
 }
+
 .filter_container {
     display: flex;
     flex-flow: column;
@@ -174,150 +153,179 @@ h1.loginHeader {
     padding: 3px;
     overflow: auto;
 }
+
 .time_table {
     display: flex;
     flex-direction: row;
     flex: 4;
     position: relative;
     margin: 10px;
-    overflow: hidden;
+    overflow: auto;
+    border: solid black 1px;
+    border-radius: 3px;
+    padding: 0 !important;
 }
-#name{
+
+.class_list {
+    flex: 5;
+    margin: 2px;
+}
+
+#name {
     height: 70px;
     position: relative;
     padding: 3px;
 }
+
 #eventContainer {
     height: auto;
     position: relative;
     padding: 3px;
 }
+
 #eventFlexContainer {
     display: flex;
     flex-direction: row;
 }
+
 #weekContainer {
     height: auto;
     position: relative;
     padding: 3px;
 }
+
 #eventfilterContainer {
     flex: 2;
     position: relative;
     padding: 3px;
 }
+
 #log_out {
     height: auto;
     position: relative;
     padding: 3px;
 }
-.class_list{
-    flex: 5;
-    margin: 2px;
+
+.eventtype {
+    width: inherit;
+    border: 1px solid black;
+    margin-bottom: 10px;
 }
 
-.new_event_button {
-    flex: 3;
-    text-align: center;
-    display: inline-block;
-    margin: 2px;
+.containerDay {
+    display: block;
+    flex: 1;
+    height: 100%;
+    border-left: solid black 1px;
+    min-width: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0;
 }
+    .containerDay:nth-child(1) {
+        border-left: none;
+    }
+
+.containerDayLabel {
+    border-bottom: solid black 1px;
+    padding: 4px;
+}
+
+/* FARBMODIFIKATIONEN */
+
+.greyedOut {
+    background-color: rgb(232, 232, 232);
+}
+
+/* SCHRIFTMODIFIKATIONEN */
+
+.sansseriflabel {
+    font-family: sans-serif;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 3px;
+    margin-left: 2px;
+    padding: 0;
+}
+
+.surname {
+    margin-left: 10px;
+}
+
+.surname, .firstname {
+    font-size: 140%;
+}
+
+.inlineParagraph {
+    display: inline-block;
+}
+
+.dayLabel {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* BUTTONS UND INPUT */
+
 .generalInputBox {
     border: solid rgb(46, 75, 122) 1px;
     background-color: rgb(247, 250, 255);
     border-radius: 3px;
     padding: 4px;
 }
-
     .generalInputBox:hover {
         transition: ease-in-out 0.1s;
-        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
+        border: solid rgb(142, 142, 142) 1px;
     }
 
     .generalInputBox:focus {
-        background-color: rgb(234, 242, 255);
+        border-color: rgb(71, 71, 71);
     }
+
 .generalButton {
     border: solid rgb(46, 75, 122) 1px;
     background-color: rgb(247, 250, 255);
     border-radius: 3px;
-    padding: 4px;
+    padding: 8px;
     color: rgb(46, 75, 122);
 }
+
     .generalButton:hover {
         transition: ease-in-out 0.1s;
-        box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
-        background-color: rgb(46, 75, 122);
-        color: rgb(247, 250, 255);
+        border: solid rgb(142, 142, 142) 1px;
+        background-color: rgb(239, 239, 239);
+        color: rgb(71, 71, 71);
     }
 
     .generalButton:focus {
-        background-color: rgb(234, 242, 255);
+        border-color: rgb(71, 71, 71);
+        color: rgb(71, 71, 71);
     }
 
-        .generalButton:focus:hover {
-            transition: ease-in-out 0.1s;
-            box-shadow: 0 0 0pt 1pt rgb(58, 93, 150);
-            background-color: rgb(46, 75, 122);
-            color: rgb(247, 250, 255);
-        }
+.events {
+    display: block;
+}
 
-    .generalButton:active {
-        background-color: rgb(31, 51, 84);
-        color: rgb(46, 75, 122);
-    }
+.eventtype_button, .date_mobile {
+    display: none;
+}
 
 .week_selection {
     width: 100%;
     height: inherit;
-    /*
-        height: 30vh;
-        position: relative;
-    */
 }
 
-.eventtype {
-    width: inherit;
-    /*
-        height:10vh;
-        min-height:100px;
-        position: relative;
-    */
-    border: 1px solid black;
-    margin-bottom: 10px;
+.new_event_button {
+    flex: 4;
+    text-align: center;
+    display: inline-block;
+    margin: 2px;
 }
 
-.events{
-    display: block;
-}
 .log_out_button {
     text-align: center;
     display: block;
     width: 100%;
     bottom: 0;
-}
-
-.eventtype_button, .date_mobile{
-    display: none;
-}
-
-.containerDay{
-    display: block;
-    flex: 1;
-    height: 100%;
-    border: solid black 1px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin: 0;
-}
-.greyedOut {
-    background-color: rgb(232, 232, 232);
-}
-.containerDayLabel{
-    border-bottom: solid black 1px;
-    padding: 4px;
-}
-.dayLabel{
-    margin: 0;
-    padding: 0;
 }

@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/general.Master" AutoEventWireup="true" CodeBehind="NewEvent.aspx.cs" Inherits="SharedAgenda.NewEvent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="styles/stylesEvent.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Neuer Event</title>
 </asp:Content>
