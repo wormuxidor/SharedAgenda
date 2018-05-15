@@ -22,6 +22,24 @@ namespace SharedAgenda {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// rb_eventtype-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rb_eventtype;
+        
+        /// <summary>
+        /// tb_Beschreibung-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_Beschreibung;
+        
+        /// <summary>
         /// edit_btn-Steuerelement
         /// </summary>
         /// <remarks>

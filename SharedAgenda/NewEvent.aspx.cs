@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +12,8 @@ namespace SharedAgenda
 {
     public partial class NewEvent : System.Web.UI.Page
     {
+        public string connectionString = ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,6 +21,37 @@ namespace SharedAgenda
 
         protected void submit_btn_Click(object sender, EventArgs e)
         {
+            DateTime hi = new DateTime(2008, 3, 1, 7, 0, 0); // Nur ein Testwert: Dieser Code wird entfernt
+
+
+            SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
+
+            SqlCommand cmd = new SqlCommand("Eintrag_hinzufügen", conn)
+            {
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
+
+            cmd.Parameters.Add("@Fach", SqlDbType.NVarChar).Value = Subject_db.SelectedItem.Text;
+            cmd.Parameters.Add("@Termin", SqlDbType.DateTime).Value = calendar.SelectedDate; /* Abklären wie geben wir Datetime ein.
+            Ein Kontroll, zwei Kontrolls oder Auswahl durch Buttons*/
+            cmd.Parameters.Add("@Typ", SqlDbType.NVarChar, 30).Value = rb_eventtype.SelectedItem.Text;
+            //cmd.Parameters.Add("@Board", SqlDbType.Int).Value = int.Parse(DDBoard.SelectedItem.Text);
+            cmd.Parameters.Add("@Kommentar", SqlDbType.NVarChar, 350).Value = tb_Beschreibung.Text;
+            cmd.Connection = conn;
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            /* 
+             Parameter für den Typ und das Board werden aus Dropdowns entnommen, da es nur eine 
+             beschränkte Anzahl Möchlichkeiten gibt, während der Kommentar vom Nutzer selbst
+             geschrieben werden muss. 
+             
+             Die Parameter werden über eine Stored Procedure an die Datenbank weitergeleitet,
+             um von Überall die Einträge aufrufen zu können.
+             */
+
             Response.Redirect("Shared_Agenda.aspx", true);
         }
 
