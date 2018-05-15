@@ -178,6 +178,7 @@ h1.loginHeader {
     flex: 4;
     position: relative;
     margin: 10px;
+    overflow: hidden;
 }
 #name{
     height:70px;
