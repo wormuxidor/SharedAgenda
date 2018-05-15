@@ -1,6 +1,6 @@
 ﻿body {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .Text_Event {
@@ -14,22 +14,20 @@
     max-width: 500px;
     height: 90%;
     max-height: 700px;
-    top:0;
-    bottom:0;
-    right:0;
-    left:0;
-    margin:auto;
-
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
     border: 2px solid rgb(46, 75, 122);
     border-radius: 3px;
     padding: 10px;
 }
 
-.subject_db, 
-.subject_txt{
-    width:98%;
+.subject_db,
+.subject_txt {
+    width: 98%;
     margin-bottom: 10px;
-
 }
 
 .calender,
@@ -42,7 +40,6 @@
 .kBeschreibung_txt {
     width: 98%;
     margin-bottom: 10px;
-
 }
 
 .tb_Beschreibung,
@@ -88,13 +85,13 @@
         color: rgb(46, 75, 122);
     }
 
-    .submit_btn{
-        width: 49%;
-    }
+.submit_btn {
+    width: 49%;
+}
 
-    .cancel_btn{
-        width: 49%;
-    }
+.cancel_btn {
+    width: 49%;
+}
 
 .generalInputBox {
     border: solid rgb(46, 75, 122) 1px;
