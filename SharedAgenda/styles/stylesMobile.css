@@ -81,9 +81,7 @@ h1.loginHeader {
         color: rgb(247, 250, 255);
     }
 .filter_container, .time_table {
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-top:2%;
+    margin: 2px;
     width: 90%;
     display:normal;
 }
@@ -134,7 +132,7 @@ h1.loginHeader {
 .week, .day {
     float: left;
     width: 48%;
-    margin: 1%;
+    margin: 2px;
     display: grid;
     margin-bottom: 3%
 }
@@ -164,4 +162,10 @@ h1.loginHeader {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+}
+.containerDay {
+    display: none;
+}
+#Monday{
+    display: block;
 }

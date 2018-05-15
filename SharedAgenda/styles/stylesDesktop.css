@@ -161,9 +161,10 @@ h1.loginHeader {
 
 #superContainer {
     display: flex;
+    position: absolute;
     flex-flow: row;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
 }
 .filter_container {
     display: flex;
@@ -171,6 +172,7 @@ h1.loginHeader {
     width: 300px;
     margin: 10px;
     padding: 3px;
+    overflow: auto;
 }
 .time_table {
     display: flex;
@@ -178,16 +180,15 @@ h1.loginHeader {
     flex: 4;
     position: relative;
     margin: 10px;
+    overflow: hidden;
 }
 #name{
-    height:70px;
-    overflow: auto;
+    height: 70px;
     position: relative;
     padding: 3px;
 }
 #eventContainer {
     height: auto;
-    overflow: auto;
     position: relative;
     padding: 3px;
 }
@@ -196,20 +197,17 @@ h1.loginHeader {
     flex-direction: row;
 }
 #weekContainer {
-    flex: 5;
-    overflow: auto;
+    height: auto;
     position: relative;
     padding: 3px;
 }
 #eventfilterContainer {
-    min-height: 100px;
-    overflow: auto;
+    flex: 2;
     position: relative;
     padding: 3px;
 }
 #log_out {
     height: auto;
-    overflow: auto;
     position: relative;
     padding: 3px;
 }
@@ -271,6 +269,7 @@ h1.loginHeader {
 
 .week_selection {
     width: 100%;
+    height: inherit;
     /*
         height: 30vh;
         position: relative;
@@ -279,7 +278,6 @@ h1.loginHeader {
 
 .eventtype {
     width: inherit;
-    min-height: 100px;
     /*
         height:10vh;
         min-height:100px;
