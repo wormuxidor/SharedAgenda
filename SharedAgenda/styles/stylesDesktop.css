@@ -138,7 +138,8 @@ h1.loginHeader {
     display: flex;
     flex-flow: row;
     width: 100%;
-    height: 100%;
+    position: absolute;
+    height: calc(100% - 50px);
 }
 .filter_container {
     display: flex;
@@ -146,6 +147,7 @@ h1.loginHeader {
     width: 300px;
     margin: 10px;
     padding: 3px;
+    overflow:auto;
 }
 .time_table {
     flex: 4;
@@ -156,7 +158,7 @@ h1.loginHeader {
 }
 #name{
     height:70px;
-    overflow: auto;
+    /*overflow: auto;*/
     position: relative;
     padding: 3px;
 }
@@ -266,3 +268,4 @@ h1.loginHeader {
 .eventtype_button, .date_mobile{
     display: none;
 }
+
