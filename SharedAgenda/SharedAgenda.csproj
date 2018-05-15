@@ -100,8 +100,6 @@
     <Content Include="scripts\scripts.js" />
     <Content Include="Shared_Agenda.aspx" />
     <Content Include="styles\stylesDesktop.css" />
-    <Content Include="styles\stylesEvent.css" />
-    <Content Include="styles\stylesEvent2.css" />
     <Content Include="styles\stylesMobile.css" />
     <Content Include="Web.config" />
   </ItemGroup>
