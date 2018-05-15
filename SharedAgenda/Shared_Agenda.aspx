@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="Shared Agenda" Language="C#" MasterPageFile="~/general.Master" AutoEventWireup="true" CodeBehind="Shared_Agenda.aspx.cs" Inherits="SharedAgenda.Shared_Agenda" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager runat="server" ID="mainScriptManager"></asp:ScriptManager>
     <div id="superContainer">
     <div class="filter_container">
         <div id="name" class="name">
@@ -15,7 +15,7 @@
                 <p class="sansseriflabel">Board:</p>
                 <div id="eventFlexContainer">
                     <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list"></asp:DropDownList>
-                <asp:LinkButton runat="server" CssClass="new_event_button generalButton" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
+                <asp:LinkButton runat="server" id="newEventButton" CssClass="new_event_button generalButton" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
                 </div>
             </div>
             <div id="weekContainer">
