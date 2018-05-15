@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="stylesheet" href="styles/stylesEvent.css" />
+    <link rel="stylesheet" href="styles/stylesEvent2.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Neuer Event</title>
 </head>
