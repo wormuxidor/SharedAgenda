@@ -30,7 +30,7 @@ namespace SharedAgenda
 
         protected void New_Event_Click(object sender, EventArgs e)
         {
-            Response.Redirect("NewEvent.aspx", true);
+            Response.Redirect("NewEvent.aspx");
         }
     }
 }
