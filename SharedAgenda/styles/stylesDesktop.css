@@ -11,7 +11,7 @@
                         rgb(31, 51, 84) [Dunkles Blau]
                         rgb(255, 216, 216) [Mildes Rot]
                         16767192 [Same, ARGB int]
-                        rgb(221, 221, 221) [GreyedOut Background]
+                        rgb(249, 249, 249) [GreyedOut Background]
                         rgb(239, 239, 239) [Helles Grau]
                         rgba(221, 221, 221, 30) [Mildes Grau, Transparent 20%]
                         rgb(142, 142, 142) [Dunkles Grau]
@@ -191,6 +191,10 @@ h1.loginHeader {
     position: relative;
     padding: 3px;
 }
+#eventFlexContainer {
+    display: flex;
+    flex-direction: row;
+}
 #weekContainer {
     flex: 5;
     overflow: auto;
@@ -210,12 +214,15 @@ h1.loginHeader {
     padding: 3px;
 }
 .class_list{
-    width:50%;
-    margin-right: 2px;
+    flex: 5;
+    margin: 2px;
 }
 
-.new_event_button{
-    width: 45%
+.new_event_button {
+    flex: 3;
+    text-align: center;
+    display: inline-block;
+    margin: 2px;
 }
 .generalInputBox {
     border: solid rgb(46, 75, 122) 1px;
@@ -305,8 +312,8 @@ h1.loginHeader {
     overflow-x: hidden;
     margin: 0;
 }
-.greyedOut{
-    background-color: rgb(221, 221, 221);
+.greyedOut {
+    background-color: rgb(232, 232, 232);
 }
 .containerDayLabel{
     border-bottom: solid black 1px;

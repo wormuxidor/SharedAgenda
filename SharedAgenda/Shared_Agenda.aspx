@@ -13,8 +13,10 @@
         </div>
             <div id="eventContainer">
                 <p class="sansseriflabel">Board:</p>
-                <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list"></asp:DropDownList>
-                <asp:Button runat="server" CssClass="new_event_button generalButton" Text="Neuer Event" OnClick="New_Event_Click"/>
+                <div id="eventFlexContainer">
+                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list"></asp:DropDownList>
+                <asp:LinkButton runat="server" CssClass="new_event_button generalButton" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
+                </div>
             </div>
             <div id="weekContainer">
                 <p class="sansseriflabel">Angezeigte Woche:</p>

@@ -17,6 +17,7 @@
                     <h1 class="loginHeader">Login</h1>
                 </div>
             </div>
+        <asp:Panel runat="server" DefaultButton="LoginButtonRow">
         <div id="loginRowsContainer">
         <div id="loginRow1" class="loginRow">
             <div id="loginRow1Label" class="loginLabel loginRowElementInline">
@@ -53,6 +54,7 @@
             </div>
         </div>
         </div>
+        </asp:Panel>
             <div id="contentFooterContainer">
                 <div class="contentFooter">
                     <asp:LinkButton runat="server" ID="loginButtonFooter" OnClick="loginButton_Click" CssClass="loginButton loginButtonFooter"
