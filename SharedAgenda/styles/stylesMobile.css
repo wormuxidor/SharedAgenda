@@ -140,19 +140,16 @@ h1.loginHeader {
 
 #eventContainer {
     height: auto;
-    overflow: auto;
     position: relative;
     padding: 0;
 }
 
 #weekContainer {
-    overflow: auto;
     position: relative;
     padding: 0;
 }
 
 #eventfilterContainer {
-    overflow: auto;
     position: relative;
     padding: 0;
     min-height: initial;
