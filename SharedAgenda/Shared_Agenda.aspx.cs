@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -10,7 +13,11 @@ namespace SharedAgenda
 {
     public partial class Shared_Agenda : System.Web.UI.Page
     {
+        public string connectionString = ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString;
+
         String[] userData;
+        String[] Eventtypes;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             this.userData = (String[]) Session["userData"];
