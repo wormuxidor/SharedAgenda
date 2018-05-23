@@ -65,7 +65,7 @@ namespace SharedAgenda
 
         private void setSessionName()
         {
-            string[] userData = new String[4];
+            string[] userData = new String[5];
 
             SqlConnection conn = new SqlConnection(connectionString);
             SqlCommand command = new SqlCommand("getFullUserData", conn)
