@@ -36,21 +36,45 @@ namespace SharedAgenda
         {
             SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
 
+            
+
             SqlCommand cmd = new SqlCommand("Get_Eintrag", conn)
             {
                 CommandType = System.Data.CommandType.StoredProcedure
             };
-
+            int year ;
             cmd.Parameters.Add("@Board", SqlDbType.NVarChar).Value = class_list.SelectedItem.Text;
-            cmd.Parameters.Add("@WochenStart", SqlDbType.DateTime).Value = GetDaysOfWeek(year, int.Parse(week_selection.SelectedItem.Text) - 1); // UNFUNCTIONAL Montag der Woche von Woche und Jahr ableiten.
-            cmd.Parameters.Add("@WochenEnde", SqlDbType.DateTime).Value = GetDaysOfWeek(year, int.Parse(week_selection.SelectedItem.Text)); // UNFUNCTIONAL Montag der nächsten Woche von Woche und Jahr ableiten
+            cmd.Parameters.Add("@WochenStart", SqlDbType.DateTime).Value = GetDaysOfWeek(year, int.Parse(week_selection.SelectedItem.Text) - 1); // Montag der Woche von Woche und Jahr ableiten.
+            cmd.Parameters.Add("@WochenEnde", SqlDbType.DateTime).Value = GetDaysOfWeek(year, int.Parse(week_selection.SelectedItem.Text)); // Montag der nächsten Woche von Woche und Jahr ableiten
 
             cmd.Connection = conn;
 
             conn.Open();
             cmd.ExecuteNonQuery();
-            conn.Close();
 
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet);
+
+            conn.Close();
+            splitInDays(dataSet);
+            }
+
+        protected void splitInDays(DataSet ds)
+        {
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                DateTime Einstelldatum = DateTime.Parse(ds.Tables[0].Rows[i]["Einstelldatum"].ToString());
+
+                String DayOfWeek = Convert.ToString(Einstelldatum.DayOfWeek);
+
+             /*   Div erstellen und Befüllen fehl noch
+              *   divDayOfWeek Label = ds.Tables[0].Rows[i]["kBeschreibung"].ToString();
+             */
+            }
+
+                
         }
 
         protected void week_selection_SelectedIndexChanged(object sender, EventArgs e)
