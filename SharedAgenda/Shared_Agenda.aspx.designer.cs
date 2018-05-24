@@ -67,15 +67,6 @@ namespace SharedAgenda {
         protected global::System.Web.UI.WebControls.ListBox week_selection;
         
         /// <summary>
-        /// WeekInput-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList WeekInput;
-        
-        /// <summary>
         /// events-Steuerelement
         /// </summary>
         /// <remarks>

@@ -58,9 +58,6 @@ namespace SharedAgenda
             adapter.Fill(ds);
             splitInDays(ds);
             conn.Close();
-
-
-            
             }
 
         protected void splitInDays(DataSet ds)
@@ -70,15 +67,17 @@ namespace SharedAgenda
                 DateTime Einstelldatum = DateTime.Parse(ds.Tables[0].Rows[i]["Einstelldatum"].ToString());
 
                 String DayOfWeek = Convert.ToString(Einstelldatum.DayOfWeek);
-                Test.Text = DayOfWeek;
+
                 /*   Div erstellen und Befüllen fehlt noch
                  
                 */
-                
+                Label SComment = new Label();
+                SComment.Text = ds.Tables[0].Rows[i]["KKommentar"].ToString();
 
                 System.Web.UI.HtmlControls.HtmlGenericControl createDiv =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
                 createDiv.ID = "createDiv" + i;
+                createDiv.Controls.Add(SComment);
 
                 createDiv.InnerHtml = Server.HtmlEncode( ds.Tables[0].Rows[i]["KKommentar"].ToString());
                 this.Controls.Add(createDiv);
