@@ -30,11 +30,12 @@ namespace SharedAgenda
                 newEventButton.Attributes.Add("style","display:none");
             }
 
-            getBoards();
-            getEventtypes();
-            Get_Date();
-            if (!Page.IsPostBack)
+            
+            if (!IsPostBack)
             {
+                getBoards();
+                getEventtypes();
+                Get_Date();
                 getSessionBoard();
             }
             
@@ -65,7 +66,7 @@ namespace SharedAgenda
         protected void getEventtypes()
         {
             SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open(); ;
+            conn.Open();
             SqlCommand cmd = new SqlCommand("getEventtypes", conn)
             {
                 CommandType = CommandType.StoredProcedure
@@ -81,97 +82,138 @@ namespace SharedAgenda
 
         }
 
-        protected void calcWeekNr(int weekNr)
-        {
-            //DateTime currentDate = DateTime.Now;
-            
-        }
-        protected void Get_Date()
+        protected object Get_Date()
         {
             SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
-            
-            SqlCommand cmd = new SqlCommand("Get_Eintrag", conn)
+            conn.Open(); ;
+            SqlCommand cmd = new SqlCommand("get_Eintrag", conn)
             {
-                CommandType = System.Data.CommandType.StoredProcedure
+                CommandType = CommandType.StoredProcedure
             };
-            string WeekInputText = week_selection.SelectedItem.Text;
-            string[] Week = WeekInputText.Split(' ');
-             
-            cmd.Parameters.Add("@Board", SqlDbType.NVarChar).Value = class_list.SelectedItem.Text;
-            cmd.Parameters.Add("@WochenStart", SqlDbType.DateTime).Value = GetDaysOfWeek(int.Parse(Week[1]), int.Parse(Week[0]) - 1); // Montag der Woche von Woche und Jahr ableiten.
-            cmd.Parameters.Add("@WochenEnde", SqlDbType.DateTime).Value = GetDaysOfWeek(int.Parse(Week[1]), int.Parse(Week[0])); // Montag der nächsten Woche von Woche und Jahr ableiten
-
-            cmd.Connection = conn;
-
-            conn.Open();
+            String WeekInputText;
+            String[] Week;
+            WeekInputText = week_selection.SelectedItem.Text;
+            Week = WeekInputText.Split(' ');
+            DateTime testDate1 = GetDaysOfWeek(Int32.Parse(Week[1]), Int32.Parse(Week[0])-1);
+            DateTime testDate2 = GetDaysOfWeek(Int32.Parse(Week[1]), Int32.Parse(Week[0]));
+            cmd.Parameters.Add("Board", SqlDbType.NVarChar).Value = class_list.SelectedItem.Text;
+            cmd.Parameters.Add("WochenStart", SqlDbType.DateTime).Value =
+                GetDaysOfWeek(Int32.Parse(Week[1]), Int32.Parse(Week[0]) - 1); // Montag der Woche von Woche und Jahr ableiten.
+            cmd.Parameters.Add("WochenEnde", SqlDbType.DateTime).Value =
+                GetDaysOfWeek(Int32.Parse(Week[1]), Int32.Parse(Week[0])); // Montag der nächsten Woche von Woche und Jahr ableiten
             cmd.ExecuteNonQuery();
-
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            adapter.Fill(ds);
-            splitInDays(ds);
-            conn.Close();
-
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            {
+                DataTable ds = new DataTable();
+                adapter.Fill(ds);
+                conn.Close();
+                int rt = ds.Rows.Count;
+                // ds wird noch nicht befüllt
+                return SplitInDays(ds);
+            }
+            
+            //SplitInDays(ds);
+            
+            
 
             
+        }
+        protected DateTime GetDaysOfWeek(int year, int Woche)
+        {
+
+            DateTime date = new DateTime(year, 1, 1);
+            DateTime newDate = date;
+
+            while (Convert.ToString(newDate.DayOfWeek) != "Monday")
+            {
+                newDate = newDate.AddDays(-1);
             }
 
-        protected void splitInDays(DataSet ds)
-        {
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                DateTime Einstelldatum = DateTime.Parse(ds.Tables[0].Rows[i]["Einstelldatum"].ToString());
+            //herausfinden des Montages aus der Woche des 1.Januar
 
-                String DayOfWeek = Convert.ToString(Einstelldatum.DayOfWeek);
-                //Test.Text = DayOfWeek;
+            newDate = newDate.AddDays(7 * Woche);
+
+            // Woche verrechnen
+
+            return newDate;
+        }
+
+        protected object SplitInDays(DataTable ds)
+        {
+            
+            DateTime Einstelldatum;
+            String DayOfWeek;
+            for (int i = 0; i < ds.Rows.Count; i++)
+            {
+                
+                Einstelldatum = DateTime.Parse(ds.Rows[i]["Einstelldatum"].ToString());
+                
+                DayOfWeek = Einstelldatum.DayOfWeek.ToString();
+                
                 /*   Div erstellen und Befüllen fehlt noch
                  
                 */
+                Label TextKKommentar = new Label();
+                TextKKommentar.ID = "Text" + i.ToString();
                 
+                TextKKommentar.Text = ds.Rows[i]["KKommentar"].ToString();
+              
+                TextKKommentar.Visible = true;
+               // TextKKommentar.DataBind();
 
-                HtmlGenericControl createDiv =
-                new HtmlGenericControl("DIV");
-                createDiv.ID = "createDiv" + i;
+                System.Web.UI.HtmlControls.HtmlGenericControl createDiv =
+                new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
+               
+                createDiv.ID = "EintragDiv" + i.ToString();
+                createDiv.Controls.Add(TextKKommentar);
+              
 
-                createDiv.InnerHtml = Server.HtmlEncode( ds.Tables[0].Rows[i]["KKommentar"].ToString());
-                this.Controls.Add(createDiv);
+                createDiv.InnerHtml = Server.HtmlEncode( ds.Rows[i]["KKommentar"].ToString());
+                // this.Controls.Add(createDiv);
+                
 
                 /*if (DayOfWeek == "Monday")
                 {
                     HtmlGenericControl Monday = (HtmlGenericControl) FindControl("Monday");
                     Monday.Controls.Add(createDiv);
+                    return Monday;
                 }
                 else if (DayOfWeek == "Tuesday")
                 {
                     HtmlGenericControl Tuesday = (HtmlGenericControl)FindControl("Tuesday");
                     Tuesday.Controls.Add(createDiv);
+                    return Tuesday;
                 }
                 else if (DayOfWeek == "Wednesday")
                 {
                     HtmlGenericControl Wednesday = (HtmlGenericControl)FindControl("Wednesday");
                     Wednesday.Controls.Add(createDiv);
+                    return Wednesday;
                 }
                 else if (DayOfWeek == "Thursday")
                 {
                     HtmlGenericControl Thursday = (HtmlGenericControl)FindControl("Thursday");
                     Thursday.Controls.Add(createDiv);
+                    return Thursday;
                 }
                 else if (DayOfWeek == "Friday")
                 {
                     HtmlGenericControl Friday = (HtmlGenericControl)FindControl("Friday");
                     Friday.Controls.Add(createDiv);
+                    return Friday;
                 }
                 else if (DayOfWeek == "Saturday")
                 {
                     HtmlGenericControl Saturday = (HtmlGenericControl)FindControl("Saturday");
                     Saturday.Controls.Add(createDiv);
+                    return Saturday;
                 }
-                else if (DayOfWeek == "Sunday")
+                else 
                 {
                     HtmlGenericControl Sunday = (HtmlGenericControl)FindControl("Sunday");
                     Sunday.Controls.Add(createDiv);
-                }*/
+                    return Sunday;
+                }
             }
 
                 
@@ -260,7 +302,6 @@ namespace SharedAgenda
 
         protected void Board_selection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["BoardID"] = 0;
             getSessionBoard();
             week_selection_SelectedIndexChanged(sender, e);
         }
@@ -286,64 +327,6 @@ namespace SharedAgenda
             }
         }
 
-        protected DateTime GetDaysOfWeek(int year, int Woche)
-        {
-            
-            DateTime date = new DateTime(year, 1, 1);
-            DateTime newDate = date;
-
-            while (Convert.ToString(newDate.DayOfWeek) != "Monday")
-            {
-                newDate = newDate.AddDays(-1);
-            }
-
-            //herausfinden des Montages aus der Woche des 1.Januar
-
-            newDate = newDate.AddDays(+7 * Woche);
-
-            // Woche verrechnen
-
-            return newDate;
-        }
-
-        protected void submit_btn_Click(object sender, EventArgs e)
-        {
-            DateTime hi = new DateTime(2008, 3, 1, 7, 0, 0); // Nur ein Testwert: Dieser Code wird entfernt
-
-
-            SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
-
-            SqlCommand cmd = new SqlCommand("Eintrag_hinzufügen", conn)
-            {
-                CommandType = System.Data.CommandType.StoredProcedure
-            };
-            /*
-            cmd.Parameters.Add("@Fach", SqlDbType.NVarChar).Value = subject_db.SelectedItem.Text;
-            cmd.Parameters.Add("@Termin", SqlDbType.DateTime).Value = calender.SelectedDate;
-            cmd.Parameters.Add("@kBeschreibung", SqlDbType.NVarChar).Value = tb_kBeschreibung.Text;
-            cmd.Parameters.Add("@Typ", SqlDbType.NVarChar, 30).Value = rb_eventtype.SelectedItem.Text;
-            //cmd.Parameters.Add("@Board", SqlDbType.Int).Value = int.Parse(DDBoard.SelectedItem.Text);
-            cmd.Parameters.Add("@Kommentar", SqlDbType.NVarChar, 350).Value = tb_Beschreibung.Text;
-            cmd.Connection = conn;*/
-
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
-
-            /* 
-             Parameter für den Typ  wird aus Radiobutton entnommen da es nur 2-3 Optionen gibt.
-             und das Board wird aus Dropdowns entnommen, da es nur eine 
-             beschränkte Anzahl Möchlichkeiten gibt, während der Kommentar vom Nutzer selbst
-             geschrieben werden muss. 
-             
-             Die Parameter werden über eine Stored Procedure an die Datenbank weitergeleitet,
-             um von Überall die Einträge aufrufen zu können.
-             */
-            if (HttpContext.Current.Request.Url.AbsolutePath != "Shared_Agenda.aspx")
-            {
-                Response.Redirect("Shared_Agenda.aspx", true);
-            }
-        }
-        
+       
     }
 }

@@ -120,6 +120,8 @@ namespace SharedAgenda {
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel containerPopup;
         
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Monday;
+        
         /// <summary>
         /// subject_db control.
         /// </summary>
@@ -127,8 +129,8 @@ namespace SharedAgenda {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList subject_db;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Tuesday;
+
         /// <summary>
         /// calender control.
         /// </summary>
@@ -136,6 +138,8 @@ namespace SharedAgenda {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Wednesday;
+        
         protected global::System.Web.UI.WebControls.Calendar calender;
         
         /// <summary>
@@ -145,6 +149,8 @@ namespace SharedAgenda {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Thursday;
+        
         protected global::System.Web.UI.WebControls.TextBox tb_kBeschreibung;
         
         /// <summary>
@@ -156,6 +162,8 @@ namespace SharedAgenda {
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rb_eventtype;
         
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Friday;
+        
         /// <summary>
         /// tb_Beschreibung control.
         /// </summary>
@@ -163,6 +171,8 @@ namespace SharedAgenda {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Saturday;
+        
         protected global::System.Web.UI.WebControls.TextBox tb_Beschreibung;
         
         /// <summary>
@@ -172,9 +182,21 @@ namespace SharedAgenda {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Sunday;
+        
         protected global::System.Web.UI.WebControls.LinkButton submit_btn;
         
         /// <summary>
+        /// popupExtender-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ModalPopupExtender popupExtender;
+        
+        /// <summary>
+        /// containerPopup-Steuerelement
         /// cancel_btn control.
         /// </summary>
         /// <remarks>
@@ -182,5 +204,6 @@ namespace SharedAgenda {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton cancel_btn;
+        protected global::System.Web.UI.WebControls.Panel containerPopup;
     }
 }

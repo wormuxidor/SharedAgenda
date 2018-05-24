@@ -18,7 +18,10 @@
             <div id="eventContainer">
                 <p class="sansseriflabel">Board:</p>
                 <div id="eventFlexContainer">
-                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list"></asp:DropDownList>
+                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list" 
+                        OnSelectedIndexChanged="Board_selection_SelectedIndexChanged"
+                        AutoPostBack="true"></asp:DropDownList>
+
                     <asp:LinkButton runat="server" id="newEventButton" CssClass="generalButton newEventButton"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
                     <asp:LinkButton runat="server" id="newEventButtonMobile" CssClass="generalButton newEventButtonMobile" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i></asp:LinkButton>
                     <asp:LinkButton runat="server" id="eventtype_button" CssClass="eventtype_button generalButton" ><i class="glyphicon glyphicon-filter"></i></asp:LinkButton>
