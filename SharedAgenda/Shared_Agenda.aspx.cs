@@ -29,7 +29,48 @@ namespace SharedAgenda
                 newEventButton.Attributes.Add("style","display:none");
             }
 
+            getBoards();
+            getEventtypes();
             Get_Date();
+        }
+
+        protected void getBoards()
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open(); ;
+            SqlCommand cmd = new SqlCommand("getBoard", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            cmd.Parameters.Add("@UserID", SqlDbType.Int).Value = Convert.ToInt32(this.userData[3]);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            conn.Close();
+            class_list.DataSource = ds;
+            class_list.DataTextField = "Boardname";
+            class_list.DataValueField = "ID";
+            class_list.DataBind();
+            class_list.Items.Insert(0, "--Klasse auswählen--");
+            class_list.SelectedIndex = 0;
+        }
+
+        protected void getEventtypes()
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open(); ;
+            SqlCommand cmd = new SqlCommand("getEventtypes", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            };
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            conn.Close();
+            events.DataSource = ds;
+            events.DataTextField = "Typ";
+            events.DataValueField = "ID";
+            events.DataBind();
         }
 
         protected void Get_Date()

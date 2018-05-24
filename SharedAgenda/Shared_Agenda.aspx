@@ -28,14 +28,17 @@
                 </asp:ListBox>
                 <div class="date_mobile">
                     <div class="week">
-                        <asp:Label runat="server" CssClass="week_label sansseriflabel" Text="Woche:"></asp:Label>
+                        <asp:Label runat="server" CssClass="week_label sansseriflabel" Text="Woche:">
+                        </asp:Label>
                         <asp:DropDownList runat="server" CssClass="week_dp generalInputBox">
-                            
+                            <asp:ListItem Text="21" Selected="True"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="day">
                         <asp:Label runat="server" CssClass="day_label sansseriflabel" Text="Tag:"></asp:Label>
-                        <asp:DropDownList runat="server" CssClass="day_dp generalInputBox"></asp:DropDownList>
+                        <asp:DropDownList runat="server" CssClass="day_dp generalInputBox">
+                            <asp:ListItem Text="5" Selected="True"></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                 </div>
             </div>
