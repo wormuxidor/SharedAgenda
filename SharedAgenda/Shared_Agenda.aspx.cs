@@ -38,6 +38,8 @@ namespace SharedAgenda
                 getSessionBoard();
             }
             
+            DateTime testTime = new DateTime(2018, 5, 25);
+            this.loadEntries(testTime, 1);
         }
 
         protected void getBoards()
@@ -79,6 +81,11 @@ namespace SharedAgenda
 
         }
 
+        protected void calcWeekNr(int weekNr)
+        {
+            //DateTime currentDate = DateTime.Now;
+            
+        }
         protected void Get_Date()
         {
             SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
@@ -170,6 +177,82 @@ namespace SharedAgenda
                 
         }
 
+        protected void loadEntries(DateTime today, int boardID)
+        {
+            if ((int) today.DayOfWeek != 1)
+            {
+                today.AddDays( - ((int)today.DayOfWeek - 1));
+            }
+            SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
+
+            SqlCommand cmd = new SqlCommand("getWochenEintraegeByDate", conn)
+            {
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
+            cmd.Parameters.Add("@Monday", SqlDbType.DateTime).Value = today;
+            cmd.Parameters.Add("@BoardID", SqlDbType.Int).Value = boardID;
+            conn.Open();
+
+            using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                for (int x = 0; x < dt.Rows.Count; x++)
+                {
+                    DataRow row = dt.Rows[x];
+                    DateTime datum = Convert.ToDateTime(row.ItemArray[2]);
+                    System.Web.UI.ScriptManager.RegisterClientScriptBlock(Page, typeof(System.Web.UI.Page), "Script", String.Format("addEntryToTimeTable({0},{1});", convertNumberToWeekday(Convert.ToInt32(datum.DayOfWeek)),
+                        row.ItemArray[0]), true);
+                    /*System.Web.UI.ScriptManager.RegisterClientScriptBlock(Page, typeof(System.Web.UI.Page), "Script", String.Format("addEntryToTimeTable({0},{1},{2},{3},{4});", convertNumberToWeekday(Convert.ToInt32(datum.DayOfWeek)), 
+                        row.ItemArray[0], row.ItemArray[1], row.ItemArray[3], row.ItemArray[2]), true);
+                    /*Page.ClientScript.RegisterStartupScript(this.GetType(), "clearControls", 
+                        String.Format("addEntryToTimeTable({0},{1},{2},{3},{4});", convertNumberToWeekday(Convert.ToInt32(datum.DayOfWeek)), 
+                        row.ItemArray[0], row.ItemArray[1], row.ItemArray[3], row.ItemArray[2]), true);*/
+                }
+                conn.Close();
+            }
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            splitInDays(ds);
+            conn.Close();
+        }
+
+        protected String convertNumberToWeekday(int dayOfWeekNumber)
+        {
+            String dayOfWeek = "";
+            if (dayOfWeekNumber == 1)
+            {
+                dayOfWeek = "Monday";
+            }
+            else if (dayOfWeekNumber == 2)
+            {
+                dayOfWeek = "Tuesday";
+            }
+            else if (dayOfWeekNumber == 3)
+            {
+                dayOfWeek = "Wednesday";
+            }
+            else if (dayOfWeekNumber == 4)
+            {
+                dayOfWeek = "Thursday";
+            }
+            else if (dayOfWeekNumber == 5)
+            {
+                dayOfWeek = "Friday";
+            }
+            else if (dayOfWeekNumber == 6)
+            {
+                dayOfWeek = "Saturday";
+            }
+            else
+            {
+                dayOfWeek = "Sunday";
+            }
+            return dayOfWeek;
+        }
         protected void week_selection_SelectedIndexChanged(object sender, EventArgs e)
         {
             Get_Date();

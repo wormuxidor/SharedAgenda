@@ -1,47 +1,32 @@
-﻿window.SessionTimeout = (function () {
-    var _timeLeft, _popupTimer, _countDownTimer;
+﻿function addEntryToTimeTable(weekday,titleString/*,description,subject,occuringTime*/) {
+    var container = document.createElement("div");
+    var title = document.createElement("h4");
+    /*var desc = document.createElement("p");
+    var subj = document.createElement("p");
+    var time = document.createElement("p");*/
+    console.log("elements created");
 
-    var stopTimers = function () {
-        window.clearTimeout(_popupTimer);
-        window.clearTimeout(_countDownTimer);
-    };
+    container.setAttribute("class", "eintragsDiv");
+    title.setAttribute("class", "eintragsh4");
+    title.textContent = titleString;
+    console.log(title.textContent);
+    /*desc.setAttribute("class", "eintragsP");
+    desc.textContent = description;
+    console.log(desc.textContent);
+    subj.setAttribute("class", "eintragsPFach");
+    subj.textContent = subject;
+    console.log(subj.textContent);
+    time.setAttribute("class", "eintragsZeit");
+    time.textContent = occuringTime;
+    console.log(time.textContent);*/
 
-    var updateCountDown = function () {
-        var min = Math.floor(_timeLeft / 60);
-        var sec = _timeLeft % 60;
-        if (sec < 10)
-            sec = "0" + sec;
+    container.appendChild(title);
+    /*container.appendChild(desc);
+    container.appendChild(subj);
+    container.appendChild(time);*/
+    console.log("appendChild Complete!");
 
-        document.getElementById("CountDownHolder").innerHTML = min + ":" + sec;
+    document.getElementById(weekday).appendChild(container);
+    Console.log("container added!");
 
-        if (_timeLeft > 0) {
-            _timeLeft--;
-            _countDownTimer = window.setTimeout(updateCountDown, 1000);
-        } else {
-            window.location = <%= QuotedTimeOutUrl %>;
-        }
-    };
-
-    var showPopup = function () {
-        _timeLeft = 60;
-        updateCountDown();
-        ClientTimeoutPopup.Show();
-    };
-
-    var schedulePopup = function () {
-        stopTimers();
-        _popupTimer = window.setTimeout(showPopup, <%= PopupShowDelay %>);
-    };
-
-    var sendKeepAlive = function () {
-        stopTimers();
-        ClientTimeoutPopup.Hide();
-        ClientKeepAliveHelper.PerformCallback();
-    };
-
-    return {
-        schedulePopup: schedulePopup,
-        sendKeepAlive: sendKeepAlive
-    };
-
-})();
+}

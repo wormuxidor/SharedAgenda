@@ -228,6 +228,42 @@ h1.loginHeader {
     padding: 4px;
 }
 
+.eintragsDiv {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(234, 242, 255);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.eintragsh4{
+    flex: 1;
+    font-family: sans-serif;
+    font-size: 120%;
+    margin: 2px;
+    padding: 0;
+}
+
+.eintragsP {
+    flex: 3;
+    font-family: sans-serif;
+    margin: 2px;
+    padding: 0;
+}
+
+.eintragsPFach {
+    flex: 1;
+    font-family: sans-serif;
+    font-size: 120%;
+    color: rgb(142, 142, 142);
+    margin: 2px;
+    padding: 0;
+}
+
+.eintragsZeit{
+    flex: 1;
+}
+
 /* FARBMODIFIKATIONEN */
 
 .greyedOut {
