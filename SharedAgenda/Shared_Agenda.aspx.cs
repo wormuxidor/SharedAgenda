@@ -234,14 +234,14 @@ namespace SharedAgenda
             {
                 CommandType = System.Data.CommandType.StoredProcedure
             };
-
+            /*
             cmd.Parameters.Add("@Fach", SqlDbType.NVarChar).Value = subject_db.SelectedItem.Text;
             cmd.Parameters.Add("@Termin", SqlDbType.DateTime).Value = calender.SelectedDate;
             cmd.Parameters.Add("@kBeschreibung", SqlDbType.NVarChar).Value = tb_kBeschreibung.Text;
             cmd.Parameters.Add("@Typ", SqlDbType.NVarChar, 30).Value = rb_eventtype.SelectedItem.Text;
             //cmd.Parameters.Add("@Board", SqlDbType.Int).Value = int.Parse(DDBoard.SelectedItem.Text);
             cmd.Parameters.Add("@Kommentar", SqlDbType.NVarChar, 350).Value = tb_Beschreibung.Text;
-            cmd.Connection = conn;
+            cmd.Connection = conn;*/
 
             conn.Open();
             cmd.ExecuteNonQuery();
@@ -256,13 +256,11 @@ namespace SharedAgenda
              Die Parameter werden über eine Stored Procedure an die Datenbank weitergeleitet,
              um von Überall die Einträge aufrufen zu können.
              */
-
-            Response.Redirect("Shared_Agenda.aspx", true);
+            if (HttpContext.Current.Request.Url.AbsolutePath != "Shared_Agenda.aspx")
+            {
+                Response.Redirect("Shared_Agenda.aspx", true);
+            }
         }
-
-        protected void cancel_btn_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
     }
 }

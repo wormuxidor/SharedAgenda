@@ -120,7 +120,8 @@ h1.loginHeader {
 
 .generalInputBox {
     border-radius: 5px;
-    padding-bottom: 2px;
+    /* padding-bottom: 2px; */
+    padding: 6px;
     height: 40px;
     margin: 2px;
     display: normal;
@@ -146,6 +147,9 @@ h1.loginHeader {
         color: rgb(247, 250, 255);
     }
 
+.class_list{
+    height: 50px;
+}
 .eventtype_button {
     text-align: center;
     display: block;

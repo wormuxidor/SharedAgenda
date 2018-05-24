@@ -228,26 +228,10 @@ h1.loginHeader {
     padding: 4px;
 }
 
-.popupPanel{
-
-}
-
-.popupDiv{
-    background-color: white;
-    border-radius: 3px;
-    padding: 5px;
-}
-
 /* FARBMODIFIKATIONEN */
 
 .greyedOut {
     background-color: rgb(232, 232, 232);
-}
-
-.popupBackground{
-    background-color: black;
-    filter: alpha(opacity=0.70);
-    opacity: 0.7;
 }
 
 /* SCHRIFTMODIFIKATIONEN */
@@ -297,6 +281,7 @@ h1.loginHeader {
     }
 
 .generalButton {
+    text-align: center;
     display: block;
     border: solid rgb(46, 75, 122) 1px;
     background-color: rgb(247, 250, 255);
@@ -349,4 +334,41 @@ h1.loginHeader {
     display: block;
     width: 100%;
     bottom: 0;
+}
+
+/* POPUP STYLING */
+
+
+.popupBackground {
+    background-color: black;
+    filter: alpha(opacity=0.70);
+    opacity: 0.7;
+}
+
+.popupDiv {
+    background-color: white;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.popupTitleContainer {
+    margin: 5px;
+    padding: 0;
+}
+
+.popupSuperContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.popupColumn1{
+    flex: 1;
+}
+
+.popupColumn2{
+    flex: 1;
+}
+
+.popupButtonContainer{
+    display: block;
 }
