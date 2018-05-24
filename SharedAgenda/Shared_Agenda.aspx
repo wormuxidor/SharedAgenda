@@ -17,7 +17,7 @@
             <div id="eventContainer">
                 <p class="sansseriflabel">Board:</p>
                 <div id="eventFlexContainer">
-                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list"></asp:DropDownList>
+                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list" OnSelectedIndexChanged="week_selection_SelectedIndexChanged"></asp:DropDownList>
                 <asp:LinkButton runat="server" id="newEventButton" CssClass="new_event_button generalButton" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
                 </div>
             </div>
@@ -57,37 +57,37 @@
         </div>
         
         <div id="time_table" class="time_table generalInputBox">
-                <div class="containerDay" id="Monday">
+                <div class="containerDay" id="Monday" runat="server">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Montag</h3>
                 </div>
             </div>
-            <div class="containerDay" id="Tuesday">
+            <div class="containerDay" id="Tuesday" runat="server">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Dienstag</h3>
                 </div>
             </div>
-            <div class="containerDay" id="Wednesday">
+            <div class="containerDay" id="Wednesday" runat="server">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Mittwoch</h3>
                 </div>
             </div>
-            <div class="containerDay" id="Thursday">
+            <div class="containerDay" id="Thursday" runat="server">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Donnerstag</h3>
                 </div>
             </div>
-            <div class="containerDay" id="Friday">
+            <div class="containerDay" id="Friday" runat="server">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Freitag</h3>
                 </div>
             </div>
-            <div class="containerDay greyedOut" id="Saturday">
+            <div class="containerDay greyedOut" id="Saturday" runat="server">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Samstag</h3>
                 </div>
             </div>
-            <div class="containerDay greyedOut" id="Sunday">
+            <div class="containerDay greyedOut" id="Sunday" runat="server">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Sonntag</h3>
                 </div>

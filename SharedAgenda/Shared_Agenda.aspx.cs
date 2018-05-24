@@ -52,13 +52,13 @@ namespace SharedAgenda
             class_list.DataValueField = "ID";
             class_list.DataBind();
             class_list.Items.Insert(0, "--Klasse auswählen--");
-            class_list.SelectedIndex = 0;
+            class_list.SelectedIndex = 1;
         }
 
         protected void getEventtypes()
         {
             SqlConnection conn = new SqlConnection(connectionString);
-            conn.Open(); ;
+            conn.Open();
             SqlCommand cmd = new SqlCommand("getEventtypes", conn)
             {
                 CommandType = CommandType.StoredProcedure
@@ -73,88 +73,134 @@ namespace SharedAgenda
             events.DataBind();
         }
 
-        protected void Get_Date()
+        protected object Get_Date()
         {
             SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
-            
-            SqlCommand cmd = new SqlCommand("Get_Eintrag", conn)
+            conn.Open(); ;
+            SqlCommand cmd = new SqlCommand("get_Eintrag", conn)
             {
-                CommandType = System.Data.CommandType.StoredProcedure
+                CommandType = CommandType.StoredProcedure
             };
-            string WeekInputText = week_selection.SelectedItem.Text;
-            string[] Week = WeekInputText.Split(' ');
-             
-            cmd.Parameters.Add("@Board", SqlDbType.NVarChar).Value = class_list.SelectedItem.Text;
-            cmd.Parameters.Add("@WochenStart", SqlDbType.DateTime).Value = GetDaysOfWeek(int.Parse(Week[1]), int.Parse(Week[0]) - 1); // Montag der Woche von Woche und Jahr ableiten.
-            cmd.Parameters.Add("@WochenEnde", SqlDbType.DateTime).Value = GetDaysOfWeek(int.Parse(Week[1]), int.Parse(Week[0])); // Montag der nächsten Woche von Woche und Jahr ableiten
-
-            cmd.Connection = conn;
-
-            conn.Open();
+            String WeekInputText;
+            String[] Week;
+            WeekInputText = week_selection.SelectedItem.Text;
+            Week = WeekInputText.Split(' ');
+            DateTime testDate1 = GetDaysOfWeek(Int32.Parse(Week[1]), Int32.Parse(Week[0])-1);
+            DateTime testDate2 = GetDaysOfWeek(Int32.Parse(Week[1]), Int32.Parse(Week[0]));
+            cmd.Parameters.Add("Board", SqlDbType.NVarChar).Value = class_list.SelectedItem.Text;
+            cmd.Parameters.Add("WochenStart", SqlDbType.DateTime).Value =
+                GetDaysOfWeek(Int32.Parse(Week[1]), Int32.Parse(Week[0]) - 1); // Montag der Woche von Woche und Jahr ableiten.
+            cmd.Parameters.Add("WochenEnde", SqlDbType.DateTime).Value =
+                GetDaysOfWeek(Int32.Parse(Week[1]), Int32.Parse(Week[0])); // Montag der nächsten Woche von Woche und Jahr ableiten
             cmd.ExecuteNonQuery();
-
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            adapter.Fill(ds);
-            splitInDays(ds);
-            conn.Close();
-
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            {
+                DataTable ds = new DataTable();
+                adapter.Fill(ds);
+                conn.Close();
+                int rt = ds.Rows.Count;
+                // ds wird noch nicht befüllt
+                return SplitInDays(ds);
+            }
+            
+            //SplitInDays(ds);
+            
+            
 
             
+        }
+        protected DateTime GetDaysOfWeek(int year, int Woche)
+        {
+
+            DateTime date = new DateTime(year, 1, 1);
+            DateTime newDate = date;
+
+            while (Convert.ToString(newDate.DayOfWeek) != "Monday")
+            {
+                newDate = newDate.AddDays(-1);
             }
 
-        protected void splitInDays(DataSet ds)
-        {
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                DateTime Einstelldatum = DateTime.Parse(ds.Tables[0].Rows[i]["Einstelldatum"].ToString());
+            //herausfinden des Montages aus der Woche des 1.Januar
 
-                String DayOfWeek = Convert.ToString(Einstelldatum.DayOfWeek);
-                //Test.Text = DayOfWeek;
+            newDate = newDate.AddDays(7 * Woche);
+
+            // Woche verrechnen
+
+            return newDate;
+        }
+
+        protected object SplitInDays(DataTable ds)
+        {
+            
+            DateTime Einstelldatum;
+            String DayOfWeek;
+            for (int i = 0; i < ds.Rows.Count; i++)
+            {
+                
+                Einstelldatum = DateTime.Parse(ds.Rows[i]["Einstelldatum"].ToString());
+                
+                DayOfWeek = Einstelldatum.DayOfWeek.ToString();
+                
                 /*   Div erstellen und Befüllen fehlt noch
                  
                 */
+                Label TextKKommentar = new Label();
+                TextKKommentar.ID = "Text" + i.ToString();
                 
+                TextKKommentar.Text = ds.Rows[i]["KKommentar"].ToString();
+              
+                TextKKommentar.Visible = true;
+               // TextKKommentar.DataBind();
 
                 System.Web.UI.HtmlControls.HtmlGenericControl createDiv =
                 new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
-                createDiv.ID = "createDiv" + i;
+               
+                createDiv.ID = "EintragDiv" + i.ToString();
+                createDiv.Controls.Add(TextKKommentar);
+              
 
-                createDiv.InnerHtml = Server.HtmlEncode( ds.Tables[0].Rows[i]["KKommentar"].ToString());
-                this.Controls.Add(createDiv);
+                createDiv.InnerHtml = Server.HtmlEncode( ds.Rows[i]["KKommentar"].ToString());
+                // this.Controls.Add(createDiv);
+                
 
                 if (DayOfWeek == "Monday")
                 {
                     Monday.Controls.Add(createDiv);
+                    return Monday;
                 }
                 else if (DayOfWeek == "Tuesday")
                 {
                     Tuesday.Controls.Add(createDiv);
+                    return Tuesday;
                 }
                 else if (DayOfWeek == "Wednesday")
                 {
                     Wednesday.Controls.Add(createDiv);
+                    return Wednesday;
                 }
                 else if (DayOfWeek == "Thursday")
                 {
                     Thursday.Controls.Add(createDiv);
+                    return Thursday;
                 }
                 else if (DayOfWeek == "Friday")
                 {
                     Friday.Controls.Add(createDiv);
+                    return Friday;
                 }
                 else if (DayOfWeek == "Saturday")
                 {
                     Saturday.Controls.Add(createDiv);
+                    return Saturday;
                 }
-                else if (DayOfWeek == "Sunday")
+                else 
                 {
                     Sunday.Controls.Add(createDiv);
+                    return Sunday;
                 }
             }
-
-                
+            return this;
+            
         }
 
         protected void week_selection_SelectedIndexChanged(object sender, EventArgs e)
@@ -178,24 +224,6 @@ namespace SharedAgenda
             }*/
         }
 
-        protected DateTime GetDaysOfWeek(int year, int Woche)
-        {
-            
-            DateTime date = new DateTime(year, 1, 1);
-            DateTime newDate = date;
-
-            while (Convert.ToString(newDate.DayOfWeek) != "Monday")
-            {
-                newDate = newDate.AddDays(-1);
-            }
-
-            //herausfinden des Montages aus der Woche des 1.Januar
-
-            newDate = newDate.AddDays(+7 * Woche);
-
-            // Woche verrechnen
-
-            return newDate;
-        }
+       
     }
 }
