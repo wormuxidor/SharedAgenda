@@ -3,7 +3,6 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="scripts/scripts.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -132,7 +131,7 @@
                         </div>
                     </div>
                     <div class="popupButtonContainer">
-                        <asp:LinkButton runat="server" CssClass="submit_btn generalButton" ID="submit_btn" OnClick="submit_btn_Click" ><i class="glyphicon glyphicon-ok-circle"></i><span> Hinzufügen</span></asp:LinkButton>
+                        <asp:LinkButton runat="server" CssClass="submit_btn generalButton" ID="submit_btn"><i class="glyphicon glyphicon-ok-circle"></i><span> Hinzufügen</span></asp:LinkButton>
                         <asp:LinkButton runat="server" CssClass="cancel_btn generalButton" ID="cancel_btn"><i class="glyphicon glyphicon-ban-circle"></i><span> Abbrechen</span></asp:LinkButton>
                     </div>
                 </div>

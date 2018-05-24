@@ -19,10 +19,7 @@ namespace SharedAgenda
         public string connectionString = ConfigurationManager.ConnectionStrings["ConStr"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-
-            }
+            
         }
 
         private bool checkDetails()
@@ -32,8 +29,8 @@ namespace SharedAgenda
             String password = passwordBox.Text;
 
             SqlConnection conn = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("pwCompare", conn)
-            {
+            SqlCommand command = new SqlCommand("pwCompare", conn)          // Passwort wird auf der Datenbank verglichen
+            {                                                               // es wird nur ein boolean Wert zurückgegeben (1 für Erfolgreich, 0 für Fehler)
                 CommandType = CommandType.StoredProcedure
             };
             command.Parameters.Add("pwhash", SqlDbType.NVarChar).Value = this.sha256_hash(password);
@@ -55,7 +52,7 @@ namespace SharedAgenda
             }
             if (isRight == true)
             {
-                return true;
+                return true;                                               // Boolean zurückgeben (Ob Anmeldung erfolgreich oder nicht)
             }
             else
             {
@@ -72,7 +69,7 @@ namespace SharedAgenda
             {
                 CommandType = CommandType.StoredProcedure
             };
-            command.Parameters.Add("email", SqlDbType.NVarChar).Value = emailBox.Text;
+            command.Parameters.Add("email", SqlDbType.NVarChar).Value = emailBox.Text;      // Userdaten von der Datenbank holen
             conn.Open();
 
             using (SqlDataAdapter sda = new SqlDataAdapter(command))
@@ -82,15 +79,15 @@ namespace SharedAgenda
                 DataRow row = dt.Rows[0];
                 for(int i = 0;i < row.ItemArray.Length; ++i)
                 {
-                    userData[i] = Convert.ToString(row.ItemArray[i]);
-                }
+                    userData[i] = Convert.ToString(row.ItemArray[i]);   // Alle Wichtigen Nutzerdaten in der Session Variable speichern
+                }                                                       // Sodass sie jederzeit von allen Forms aus verfügbar sind
                 conn.Close();
                 Session["userData"] = userData;
             }
         }
 
-        private String sha256_hash(String value)
-        {
+        private String sha256_hash(String value)                        // Generierung von Hash zum Abgleich auf der Datenbank
+        {                                                               // (Passwort auf Datenbank nur als Hash)
             StringBuilder Sb = new StringBuilder();
 
             using (SHA256 hash = SHA256Managed.Create())
@@ -109,18 +106,13 @@ namespace SharedAgenda
         {
             if (this.checkDetails())
             {
-                this.setSessionName();
+                this.setSessionName();                                              // Wenn User & Passwort korrekt, dann Session erstellen und Authentifizieren
                 FormsAuthentication.RedirectFromLoginPage(emailBox.Text, false);
             }
             else
             {
-                System.Web.UI.WebControls.Image emailIco = loginFailedIcoEmail;
+                System.Web.UI.WebControls.Image emailIco = loginFailedIcoEmail;     // Wenn nicht, dann Fehler Icons anzeigen
                 System.Web.UI.WebControls.Image pwIco = loginFailedIcoPw;
-
-                //etb.BackColor = Color.FromArgb(16767192);
-                //ptb.BackColor = Color.FromArgb(16767192);
-                //emailBox.Attributes.Add("class","loginFailed");
-                //passwordBox.Attributes.Add("class", "loginFailed");
 
                 emailIco.CssClass = "showLoginFailedIco";
                 pwIco.CssClass = "showLoginFailedIco";

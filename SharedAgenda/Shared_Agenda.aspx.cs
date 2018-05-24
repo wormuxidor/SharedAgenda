@@ -35,8 +35,8 @@ namespace SharedAgenda
             {
                 getBoards();
                 getEventtypes();
-                Get_Date();
-                getSessionBoard();
+                /*Get_Date();
+                getSessionBoard();*/
             }
             
             DateTime testTime = new DateTime(2018, 5, 25);
@@ -150,9 +150,9 @@ namespace SharedAgenda
                 
                 DayOfWeek = Einstelldatum.DayOfWeek.ToString();
                 
-                /*   Div erstellen und Befüllen fehlt noch
+                //   Div erstellen und Befüllen fehlt noch
                  
-                */
+                
                 Label TextKKommentar = new Label();
                 TextKKommentar.ID = "Text" + i.ToString();
                 
@@ -172,7 +172,7 @@ namespace SharedAgenda
                 // this.Controls.Add(createDiv);
                 
 
-                /*if (DayOfWeek == "Monday")
+                if (DayOfWeek == "Monday")
                 {
                     HtmlGenericControl Monday = (HtmlGenericControl) FindControl("Monday");
                     Monday.Controls.Add(createDiv);
@@ -215,13 +215,13 @@ namespace SharedAgenda
                     return Sunday;
                 }
             }
-
+            return null;
                 
         }
 
         protected void loadEntries(DateTime today, int boardID)
         {
-            if ((int) today.DayOfWeek != 1)
+            if ((int) today.DayOfWeek != 1)  // Sicherstellen, dass das Datum ein Montag ist, um dann die gesamte folgende Woche von der Datenbank ziehen zu können
             {
                 today.AddDays( - ((int)today.DayOfWeek - 1));
             }
@@ -239,12 +239,14 @@ namespace SharedAgenda
             {
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
-                for (int x = 0; x < dt.Rows.Count; x++)
+                for (int x = 0; x < dt.Rows.Count; x++) // Für jeden Eintrag in dieser Woche einen Eintrag in der Tabelle erstellen
                 {
                     DataRow row = dt.Rows[x];
                     DateTime datum = Convert.ToDateTime(row.ItemArray[2]);
                     System.Web.UI.ScriptManager.RegisterClientScriptBlock(Page, typeof(System.Web.UI.Page), "Script", String.Format("addEntryToTimeTable({0},{1});", convertNumberToWeekday(Convert.ToInt32(datum.DayOfWeek)),
-                        row.ItemArray[0]), true);
+                        row.ItemArray[0]), true);  // Eintrag soll über JavaScript erstellt werden:  FUNKTIONIERT NOCH NICHT!
+
+                    // Andere Versuche [Friedhof]:
                     /*System.Web.UI.ScriptManager.RegisterClientScriptBlock(Page, typeof(System.Web.UI.Page), "Script", String.Format("addEntryToTimeTable({0},{1},{2},{3},{4});", convertNumberToWeekday(Convert.ToInt32(datum.DayOfWeek)), 
                         row.ItemArray[0], row.ItemArray[1], row.ItemArray[3], row.ItemArray[2]), true);
                     /*Page.ClientScript.RegisterStartupScript(this.GetType(), "clearControls", 
@@ -253,18 +255,12 @@ namespace SharedAgenda
                 }
                 conn.Close();
             }
-
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-            DataSet ds = new DataSet();
-            adapter.Fill(ds);
-            splitInDays(ds);
-            conn.Close();
+            
         }
 
         protected String convertNumberToWeekday(int dayOfWeekNumber)
         {
-            String dayOfWeek = "";
+            String dayOfWeek = ""; // Herausfinden, welches Datum welcher Wochentag ist (Für Abgleich mit Datenbank)
             if (dayOfWeekNumber == 1)
             {
                 dayOfWeek = "Monday";
@@ -314,8 +310,8 @@ namespace SharedAgenda
 
         protected void log_out_button_Click(object sender, EventArgs e)
         {
-            FormsAuthentication.SignOut();
-            Response.Redirect("Login.aspx");
+            FormsAuthentication.SignOut();      // Authentifizierung beenden
+            Response.Redirect("Login.aspx");    // Zurück zu Login Page
         }
 
         protected void New_Event_Click(object sender, EventArgs e)
@@ -323,7 +319,7 @@ namespace SharedAgenda
             int privilege = Convert.ToInt32(this.userData[2]);
             if (privilege >= 2)
             {
-                Response.Redirect("NewEvent.aspx");
+                Response.Redirect("NewEvent.aspx");     // Weiterleitung zur "Neuer Event" Page nur mit speziellen Rechten (Zusatzschutz zur Ausblendung des Buttons... )
             }
         }
 
