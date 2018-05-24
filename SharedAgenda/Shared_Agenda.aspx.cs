@@ -29,11 +29,12 @@ namespace SharedAgenda
                 newEventButton.Attributes.Add("style","display:none");
             }
 
-            getBoards();
-            getEventtypes();
-            Get_Date();
-            if (!Page.IsPostBack)
+            
+            if (!IsPostBack)
             {
+                getBoards();
+                getEventtypes();
+                Get_Date();
                 getSessionBoard();
             }
             
@@ -169,7 +170,6 @@ namespace SharedAgenda
 
         protected void Board_selection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["BoardID"] = 0;
             getSessionBoard();
             week_selection_SelectedIndexChanged(sender, e);
         }

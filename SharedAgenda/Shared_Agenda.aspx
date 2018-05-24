@@ -11,14 +11,15 @@
     <div class="filter_container">
         <div id="name" class="name">
             <p class="sansseriflabel">Wilkommen,</p>
-            <asp:Label runat="server" ID="Testlabel"></asp:Label>
             <asp:Label runat="server" CssClass="surname sansseriflabel inlineParagraph" ID="firstname" Text="Vorname"></asp:Label>
             <asp:Label runat="server" CssClass="firstname sansseriflabel inlineParagraph" ID="surname" Text="Nachname"></asp:Label>
         </div>
             <div id="eventContainer">
                 <p class="sansseriflabel">Board:</p>
                 <div id="eventFlexContainer">
-                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list" OnSelectedIndexChanged="week_selection_SelectedIndexChanged"></asp:DropDownList>
+                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list" 
+                        OnSelectedIndexChanged="Board_selection_SelectedIndexChanged"
+                        AutoPostBack="true"></asp:DropDownList>
                 <asp:LinkButton runat="server" id="newEventButton" CssClass="new_event_button generalButton" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
                 </div>
             </div>

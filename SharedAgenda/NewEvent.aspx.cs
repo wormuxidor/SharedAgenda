@@ -24,7 +24,6 @@ namespace SharedAgenda
         protected void getFaecher()
         {
             string BoardID = (string)Session["BoardID"];
-            Testlabel.Text = BoardID;
 
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open(); ;
@@ -41,8 +40,8 @@ namespace SharedAgenda
             subject_db.DataTextField = "Fach";
             subject_db.DataValueField = "ID";
             subject_db.DataBind();
-            subject_db.Items.Insert(0, BoardID);
-            subject_db.SelectedIndex = 0;
+            subject_db.Items.Insert(0, "--Fach asuwählen--");
+            subject_db.SelectedIndex = 1;
         }
 
         protected void getEventtypes()
@@ -66,27 +65,43 @@ namespace SharedAgenda
         protected void submit_btn_Click(object sender, EventArgs e)
         {
             string BoardID = (string)Session["BoardID"];
+            int FachID = Convert.ToInt32(subject_db.SelectedItem.Value.ToString());
+            int TypID = 2;
+            if (rb_eventtype.Text == "Test")
+            {
+                TypID = 1;
+            }
+            else if (rb_eventtype.Text == "Hausaufgaben")
+            {
+                TypID = 2;
+            }
+            else
+            {
+                TypID = 3;
+            }
 
-            DateTime hi = new DateTime(2008, 3, 1, 7, 0, 0); // Nur ein Testwert: Dieser Code wird entfernt
+
+            //DateTime hi = new DateTime(2008, 3, 1, 7, 0, 0); // Nur ein Testwert: Dieser Code wird entfernt
 
 
             SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
+
+            conn.Open();
 
             SqlCommand cmd = new SqlCommand("Eintrag_hinzufügen", conn)
             {
                 CommandType = System.Data.CommandType.StoredProcedure
             };
 
-            cmd.Parameters.Add("@FachID", SqlDbType.Int).Value = subject_db.SelectedItem.Value;
+            cmd.Parameters.Add("@FachID", SqlDbType.Int).Value = FachID;
             cmd.Parameters.Add("@Termin", SqlDbType.DateTime).Value = calender.SelectedDate;
-            cmd.Parameters.Add("@kKommentar",SqlDbType.NVarChar ).Value = tb_kBeschreibung.Text;
-            cmd.Parameters.Add("@TypID", SqlDbType.Int).Value = rb_eventtype.SelectedItem.Value;
-            cmd.Parameters.Add("@BoardID", SqlDbType.Int).Value = BoardID;
+            cmd.Parameters.Add("@TypID", SqlDbType.Int).Value = TypID;
+            cmd.Parameters.Add("@BoardID", SqlDbType.Int).Value = Convert.ToInt32(BoardID);
             cmd.Parameters.Add("@Kommentar", SqlDbType.NVarChar, 350).Value = tb_Beschreibung.Text;
-            cmd.Connection = conn;
+            cmd.Parameters.Add("@kKommentar",SqlDbType.NVarChar ).Value = tb_kBeschreibung.Text;
 
-            conn.Open();
             cmd.ExecuteNonQuery();
+
             conn.Close();
 
             /* 

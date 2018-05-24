@@ -22,15 +22,6 @@ namespace SharedAgenda {
         protected global::System.Web.UI.ScriptManager mainScriptManager;
         
         /// <summary>
-        /// Testlabel-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Testlabel;
-        
-        /// <summary>
         /// firstname-Steuerelement
         /// </summary>
         /// <remarks>
