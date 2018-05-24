@@ -70,7 +70,7 @@ namespace SharedAgenda
                 DateTime Einstelldatum = DateTime.Parse(ds.Tables[0].Rows[i]["Einstelldatum"].ToString());
 
                 String DayOfWeek = Convert.ToString(Einstelldatum.DayOfWeek);
-                Test.Text = DayOfWeek;
+                //Test.Text = DayOfWeek;
                 /*   Div erstellen und Befüllen fehlt noch
                  
                 */
