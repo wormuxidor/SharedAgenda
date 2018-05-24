@@ -11,13 +11,14 @@
     <div class="filter_container">
         <div id="name" class="name">
             <p class="sansseriflabel">Wilkommen,</p>
+            <asp:Label runat="server" ID="Testlabel"></asp:Label>
             <asp:Label runat="server" CssClass="surname sansseriflabel inlineParagraph" ID="firstname" Text="Vorname"></asp:Label>
             <asp:Label runat="server" CssClass="firstname sansseriflabel inlineParagraph" ID="surname" Text="Nachname"></asp:Label>
         </div>
             <div id="eventContainer">
                 <p class="sansseriflabel">Board:</p>
                 <div id="eventFlexContainer">
-                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list"></asp:DropDownList>
+                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list" OnSelectedIndexChanged="week_selection_SelectedIndexChanged"></asp:DropDownList>
                 <asp:LinkButton runat="server" id="newEventButton" CssClass="new_event_button generalButton" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
                 </div>
             </div>
@@ -57,12 +58,12 @@
         </div>
         
         <div id="time_table" class="time_table generalInputBox">
-                <div class="containerDay" id="Monday">
+            <div class="containerDay" id="MondayDiv">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Montag</h3>
                 </div>
             </div>
-            <div class="containerDay" id="Tuesday">
+            <div class="containerDay" id="TuesdayDiv">
                 <div class="containerDayLabel">
                     <h3 class="dayLabel">Dienstag</h3>
                 </div>
