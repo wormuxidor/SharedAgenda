@@ -18,11 +18,13 @@
                 <p class="sansseriflabel">Board:</p>
                 <div id="eventFlexContainer">
                     <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list"></asp:DropDownList>
-                <asp:LinkButton runat="server" id="newEventButton" CssClass="new_event_button generalButton" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
+                    <asp:LinkButton runat="server" id="newEventButton" CssClass="generalButton newEventButton"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
+                    <asp:LinkButton runat="server" id="newEventButtonMobile" CssClass="generalButton newEventButtonMobile" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" id="eventtype_button" CssClass="eventtype_button generalButton" ><i class="glyphicon glyphicon-filter"></i></asp:LinkButton>
                 </div>
             </div>
             <div id="weekContainer">
-                <p class="sansseriflabel">Angezeigte Woche:</p>
+                <p class="sansseriflabel mobileDisplayNone">Angezeigte Woche:</p>
                 <asp:ListBox runat="server" CssClass="week_selection generalInputBox" ID="week_selection" OnSelectedIndexChanged="week_selection_SelectedIndexChanged">
                     <asp:ListItem  Text="21 2018" Selected="True"></asp:ListItem>
                 </asp:ListBox>
@@ -43,13 +45,13 @@
                 </div>
             </div>
             <div id="eventfilterContainer">
-                <p class="sansseriflabel">Eventtyp:</p>
+                <p class="sansseriflabel mobileDisplayNone">Eventtyp:</p>
                 <div class="eventtype generalInputBox" id="eventtype">
                     <asp:CheckBoxList runat="server" CssClass="events" ID="events">
                         
                     </asp:CheckBoxList>
                 </div>
-                <asp:Button runat="server" CssClass="eventtype_button generalButton" ID="eventtype_button" Text="Event filtern" />
+                
             </div>
         <div id="log_out" class="log_out">
             <asp:LinkButton runat="server" CssClass="log_out_button generalButton" ID="log_out_button" OnClick="log_out_button_Click"><i class="glyphicon glyphicon-log-out"></i><span> Abmelden</span></asp:LinkButton>
@@ -94,12 +96,25 @@
             </div>
         </div>
         <ajaxToolkit:ModalPopupExtender ID="popupExtender" runat="server" TargetControlID="newEventButton"
-            PopupControlID="containerPopup" DropShadow="true" BackgroundCssClass="popupBackground" ></ajaxToolkit:ModalPopupExtender>
-        <asp:Panel runat="server" ID="containerPopup" > 
-            <iframe width="400" height="700" src="NewEvent.aspx">
-
-            </iframe>
-            <asp:LinkButton runat="server"><i class="glyphicon glyphicon-sunglasses"></i><span>Erstellen</span></asp:LinkButton>
+            PopupControlID="containerPopup" DropShadow="false" BackgroundCssClass="popupBackground" 
+            CancelControlID="cancel_btn" OkControlID="submit_btn" ></ajaxToolkit:ModalPopupExtender>
+        <asp:Panel runat="server" ID="containerPopup" CssClass="popupPanel" > 
+            <div class="popupDiv">
+                <div class="Event">
+                <asp:Label runat="server" CssClass="Text_Event" Text="Fach"></asp:Label><br />
+                <asp:DropDownList runat="server" ID="subject_db" CssClass="subject_db generalInputBox"></asp:DropDownList><br />
+                <asp:Label runat="server" CssClass="Text_Event" Text="Datum"></asp:Label><br />
+                <asp:Calendar runat="server" id="calender" CssClass="calender generalInputBox"></asp:Calendar><br />
+                <asp:Label runat="server" CssClass="Text_Event" Text="Kurzbeschreibung"></asp:Label><br />
+                <asp:TextBox runat="server" ID="tb_kBeschreibung" CssClass="tb_kBeschreibung generalInputBox"></asp:TextBox><br />
+                <asp:Label runat="server" CssClass="Text_Event" Text="Eventtype"></asp:Label><br />
+                <asp:RadioButtonList runat="server" ID="rb_eventtype" CssClass="rb_eventtype generalInputBox"></asp:RadioButtonList><br />
+                <asp:Label runat="server" CssClass="Text_Event" Text="Beschreibung"></asp:Label><br />
+                <asp:TextBox runat="server" ID="tb_Beschreibung" CssClass="tb_Beschreibung generalInputBox"></asp:TextBox><br />
+                <asp:Button runat="server" CssClass="submit_btn generalButton" ID="submit_btn" Text="Hinzufügen" OnClick="submit_btn_Click" />
+                <asp:Button runat="server" CssClass="cancel_btn generalButton" ID="cancel_btn" Text="Abbrechen" />
+                </div>
+            </div>
         </asp:Panel>
     </div>
 </asp:Content>

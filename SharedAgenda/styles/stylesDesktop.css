@@ -27,6 +27,7 @@ nav {
     right: 0;
     left: 0;
     bottom: 0;
+    padding-left: 10px;
 }
 .loginTextBox {
     border: solid rgb(46, 75, 122) 1px;
@@ -166,10 +167,6 @@ h1.loginHeader {
     padding: 0 !important;
 }
 
-.class_list {
-    flex: 5;
-    margin: 2px;
-}
 
 #name {
     height: 70px;
@@ -231,6 +228,16 @@ h1.loginHeader {
     padding: 4px;
 }
 
+.popupPanel{
+
+}
+
+.popupDiv{
+    background-color: white;
+    border-radius: 3px;
+    padding: 5px;
+}
+
 /* FARBMODIFIKATIONEN */
 
 .greyedOut {
@@ -290,6 +297,7 @@ h1.loginHeader {
     }
 
 .generalButton {
+    display: block;
     border: solid rgb(46, 75, 122) 1px;
     background-color: rgb(247, 250, 255);
     border-radius: 3px;
@@ -322,11 +330,18 @@ h1.loginHeader {
     height: inherit;
 }
 
-.new_event_button {
-    flex: 4;
-    text-align: center;
-    display: inline-block;
+.class_list {
+    display: block;
+    flex: 5;
     margin: 2px;
+}
+
+.newEventButton{
+    display: block;
+}
+
+.newEventButtonMobile{
+    display: none;
 }
 
 .log_out_button {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace SharedAgenda
@@ -117,8 +118,8 @@ namespace SharedAgenda
                 */
                 
 
-                System.Web.UI.HtmlControls.HtmlGenericControl createDiv =
-                new System.Web.UI.HtmlControls.HtmlGenericControl("DIV");
+                HtmlGenericControl createDiv =
+                new HtmlGenericControl("DIV");
                 createDiv.ID = "createDiv" + i;
 
                 createDiv.InnerHtml = Server.HtmlEncode( ds.Tables[0].Rows[i]["KKommentar"].ToString());
@@ -126,30 +127,37 @@ namespace SharedAgenda
 
                 if (DayOfWeek == "Monday")
                 {
+                    HtmlGenericControl Monday = (HtmlGenericControl) FindControl("Monday");
                     Monday.Controls.Add(createDiv);
                 }
                 else if (DayOfWeek == "Tuesday")
                 {
+                    HtmlGenericControl Tuesday = (HtmlGenericControl)FindControl("Tuesday");
                     Tuesday.Controls.Add(createDiv);
                 }
                 else if (DayOfWeek == "Wednesday")
                 {
+                    HtmlGenericControl Wednesday = (HtmlGenericControl)FindControl("Wednesday");
                     Wednesday.Controls.Add(createDiv);
                 }
                 else if (DayOfWeek == "Thursday")
                 {
+                    HtmlGenericControl Thursday = (HtmlGenericControl)FindControl("Thursday");
                     Thursday.Controls.Add(createDiv);
                 }
                 else if (DayOfWeek == "Friday")
                 {
+                    HtmlGenericControl Friday = (HtmlGenericControl)FindControl("Friday");
                     Friday.Controls.Add(createDiv);
                 }
                 else if (DayOfWeek == "Saturday")
                 {
+                    HtmlGenericControl Saturday = (HtmlGenericControl)FindControl("Saturday");
                     Saturday.Controls.Add(createDiv);
                 }
                 else if (DayOfWeek == "Sunday")
                 {
+                    HtmlGenericControl Sunday = (HtmlGenericControl)FindControl("Sunday");
                     Sunday.Controls.Add(createDiv);
                 }
             }
@@ -170,12 +178,11 @@ namespace SharedAgenda
 
         protected void New_Event_Click(object sender, EventArgs e)
         {
-            /*
             int privilege = Convert.ToInt32(this.userData[2]);
             if (privilege >= 2)
             {
                 Response.Redirect("NewEvent.aspx");
-            }*/
+            }
         }
 
         protected DateTime GetDaysOfWeek(int year, int Woche)
@@ -196,6 +203,48 @@ namespace SharedAgenda
             // Woche verrechnen
 
             return newDate;
+        }
+
+        protected void submit_btn_Click(object sender, EventArgs e)
+        {
+            DateTime hi = new DateTime(2008, 3, 1, 7, 0, 0); // Nur ein Testwert: Dieser Code wird entfernt
+
+
+            SqlConnection conn = new SqlConnection(connectionString); //Connectionstring erstellen
+
+            SqlCommand cmd = new SqlCommand("Eintrag_hinzufügen", conn)
+            {
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
+
+            cmd.Parameters.Add("@Fach", SqlDbType.NVarChar).Value = subject_db.SelectedItem.Text;
+            cmd.Parameters.Add("@Termin", SqlDbType.DateTime).Value = calender.SelectedDate;
+            cmd.Parameters.Add("@kBeschreibung", SqlDbType.NVarChar).Value = tb_kBeschreibung.Text;
+            cmd.Parameters.Add("@Typ", SqlDbType.NVarChar, 30).Value = rb_eventtype.SelectedItem.Text;
+            //cmd.Parameters.Add("@Board", SqlDbType.Int).Value = int.Parse(DDBoard.SelectedItem.Text);
+            cmd.Parameters.Add("@Kommentar", SqlDbType.NVarChar, 350).Value = tb_Beschreibung.Text;
+            cmd.Connection = conn;
+
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            /* 
+             Parameter für den Typ  wird aus Radiobutton entnommen da es nur 2-3 Optionen gibt.
+             und das Board wird aus Dropdowns entnommen, da es nur eine 
+             beschränkte Anzahl Möchlichkeiten gibt, während der Kommentar vom Nutzer selbst
+             geschrieben werden muss. 
+             
+             Die Parameter werden über eine Stored Procedure an die Datenbank weitergeleitet,
+             um von Überall die Einträge aufrufen zu können.
+             */
+
+            Response.Redirect("Shared_Agenda.aspx", true);
+        }
+
+        protected void cancel_btn_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

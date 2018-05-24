@@ -93,10 +93,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ico\login_16px.png" />
-    <Content Include="ico\login_24px.png" />
-    <Content Include="ico\login_32px.png" />
-    <Content Include="ico\login_64px.png" />
     <Content Include="ico\login_failed_24px.png" />
     <Content Include="ico\login_failed_32px.png" />
     <Content Include="Login.aspx" />
