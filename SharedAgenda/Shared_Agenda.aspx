@@ -17,9 +17,7 @@
             <div id="eventContainer">
                 <p class="sansseriflabel">Board:</p>
                 <div id="eventFlexContainer">
-                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list">
-                        
-                    </asp:DropDownList>
+                    <asp:DropDownList runat="server" CssClass="class_list generalInputBox" ID="class_list"></asp:DropDownList>
                 <asp:LinkButton runat="server" id="newEventButton" CssClass="new_event_button generalButton" OnClick="New_Event_Click"><i class="glyphicon glyphicon-duplicate"></i><span> Neuer Event</span></asp:LinkButton>
                 </div>
             </div>
@@ -29,7 +27,9 @@
                 <div class="date_mobile">
                     <div class="week">
                         <asp:Label runat="server" CssClass="week_label sansseriflabel" Text="Woche:"></asp:Label>
-                        <asp:DropDownList runat="server" CssClass="week_dp generalInputBox"></asp:DropDownList>
+                        <asp:DropDownList runat="server" CssClass="week_dp generalInputBox">
+                            <asp:ListItem  Text="21 2018"></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                     <div class="day">
                         <asp:Label runat="server" CssClass="day_label sansseriflabel" Text="Tag:"></asp:Label>
