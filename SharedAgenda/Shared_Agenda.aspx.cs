@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace SharedAgenda
@@ -32,6 +33,11 @@ namespace SharedAgenda
             getBoards();
             getEventtypes();
             Get_Date();
+            if (!Page.IsPostBack)
+            {
+                getSessionBoard();
+            }
+            
         }
 
         protected void getBoards()
@@ -51,7 +57,6 @@ namespace SharedAgenda
             class_list.DataTextField = "Boardname";
             class_list.DataValueField = "ID";
             class_list.DataBind();
-            class_list.Items.Insert(0, "--Klasse auswählen--");
             class_list.SelectedIndex = 1;
         }
 
@@ -71,6 +76,7 @@ namespace SharedAgenda
             events.DataTextField = "Typ";
             events.DataValueField = "ID";
             events.DataBind();
+
         }
 
         protected object Get_Date()
@@ -163,38 +169,45 @@ namespace SharedAgenda
                 // this.Controls.Add(createDiv);
                 
 
-                if (DayOfWeek == "Monday")
+                /*if (DayOfWeek == "Monday")
                 {
+                    HtmlGenericControl Monday = (HtmlGenericControl) FindControl("Monday");
                     Monday.Controls.Add(createDiv);
                     return Monday;
                 }
                 else if (DayOfWeek == "Tuesday")
                 {
+                    HtmlGenericControl Tuesday = (HtmlGenericControl)FindControl("Tuesday");
                     Tuesday.Controls.Add(createDiv);
                     return Tuesday;
                 }
                 else if (DayOfWeek == "Wednesday")
                 {
+                    HtmlGenericControl Wednesday = (HtmlGenericControl)FindControl("Wednesday");
                     Wednesday.Controls.Add(createDiv);
                     return Wednesday;
                 }
                 else if (DayOfWeek == "Thursday")
                 {
+                    HtmlGenericControl Thursday = (HtmlGenericControl)FindControl("Thursday");
                     Thursday.Controls.Add(createDiv);
                     return Thursday;
                 }
                 else if (DayOfWeek == "Friday")
                 {
+                    HtmlGenericControl Friday = (HtmlGenericControl)FindControl("Friday");
                     Friday.Controls.Add(createDiv);
                     return Friday;
                 }
                 else if (DayOfWeek == "Saturday")
                 {
+                    HtmlGenericControl Saturday = (HtmlGenericControl)FindControl("Saturday");
                     Saturday.Controls.Add(createDiv);
                     return Saturday;
                 }
                 else 
                 {
+                    HtmlGenericControl Sunday = (HtmlGenericControl)FindControl("Sunday");
                     Sunday.Controls.Add(createDiv);
                     return Sunday;
                 }
@@ -208,6 +221,19 @@ namespace SharedAgenda
             Get_Date();
         }
 
+        protected void Board_selection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["BoardID"] = 0;
+            getSessionBoard();
+            week_selection_SelectedIndexChanged(sender, e);
+        }
+
+        protected void getSessionBoard()
+        {
+            string BoardID = class_list.SelectedItem.Value.ToString();
+            Session["BoardID"] = BoardID;
+        }
+
         protected void log_out_button_Click(object sender, EventArgs e)
         {
             FormsAuthentication.SignOut();
@@ -216,12 +242,11 @@ namespace SharedAgenda
 
         protected void New_Event_Click(object sender, EventArgs e)
         {
-            /*
             int privilege = Convert.ToInt32(this.userData[2]);
             if (privilege >= 2)
             {
                 Response.Redirect("NewEvent.aspx");
-            }*/
+            }
         }
 
        

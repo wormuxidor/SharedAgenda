@@ -21,7 +21,7 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
             <nav id="constantBottomNav">
-
+                <asp:Image runat="server" CssClass="navLogo" ImageUrl="ico/Logo.png" />
             </nav>
         </div>
     </form>
